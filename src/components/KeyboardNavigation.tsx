@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 const ROUTES = [
   "/",
+  "/projects/certora",
   "/projects",
   "/projects/problem",
   "/projects/proposal",

@@ -10,7 +10,7 @@ export default function DelekSolution() {
       backLink="/projects/delek/problem"
       nextLink="/projects/delek/success"
       rightContent={
-        <div className="relative w-full max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden sticky top-24">
+        <div className="relative w-full max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
           <Image
             src={delekSolutionImg}
             alt="Delek App Solution Interface"
@@ -21,8 +21,8 @@ export default function DelekSolution() {
       }
     >
       <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
-        <span className="font-normal block">My part of</span>
-        the solution
+        <span className="font-normal block">My</span>
+        Part
       </h1>
       <div className="text-xl opacity-80 max-w-lg leading-relaxed space-y-4">
         <p>

@@ -10,7 +10,7 @@ export default function AutoCADProblem() {
       backLink="/projects"
       nextLink="/projects/proposal"
       rightContent={
-        <div className="relative w-full max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden sticky top-24">
+        <div className="relative w-full max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
           <Image
             src={problemImg}
             alt="AutoCAD Mobile Problem Interface"

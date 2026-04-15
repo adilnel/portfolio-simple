@@ -15,7 +15,7 @@ export default function Home() {
 
       <div className="mt-auto pt-24">
         <Link 
-          href="/projects" 
+          href="/projects/certora" 
           className="inline-flex items-center gap-4 text-xl sm:text-2xl font-semibold uppercase hover:text-zinc-300 transition-colors group"
         >
           Projects

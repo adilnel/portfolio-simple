@@ -7,10 +7,10 @@ export default function AutoCADGoal() {
     <ProjectLayout
       title="AutoCAD Mobile"
       subtitle="Mobile extension of the famous AutoCAD software, iOS native & Android native."
-      backLink="/"
+      backLink="/projects/certora"
       nextLink="/projects/problem"
       rightContent={
-        <div className="relative w-full max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden sticky top-24">
+        <div className="relative w-full max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
           <Image
             src={goalImg}
             alt="AutoCAD Mobile Interface"

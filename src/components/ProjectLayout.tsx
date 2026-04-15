@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
+interface NavItem {
+  label: string;
+  href: string;
+  active?: boolean;
+}
+
 interface ProjectLayoutProps {
   children: ReactNode;
   rightContent: ReactNode;
   title: string;
-  subtitle: string;
+  subtitle?: string;
+  navItems?: NavItem[];
   backLink: string;
   nextLink?: string | { label: string; href: string };
 }
@@ -15,11 +22,12 @@ export default function ProjectLayout({
   rightContent,
   title,
   subtitle,
+  navItems,
   backLink,
   nextLink,
 }: ProjectLayoutProps) {
   return (
-    <main className="min-h-screen bg-white text-black flex flex-col md:flex-row overflow-x-hidden">
+    <main className="min-h-screen bg-white text-black flex flex-col md:flex-row overflow-x-hidden pb-32 md:pb-0">
       {/* Left Content - Fixed on Desktop */}
       <div className="w-full md:w-1/2 md:fixed md:left-0 md:top-0 md:h-screen flex flex-col justify-between p-8 md:p-24 lg:pl-44 bg-white z-10 border-r border-zinc-100">
         <div className="space-y-4">
@@ -37,10 +45,30 @@ export default function ProjectLayout({
             <h2 className="text-3xl font-bold tracking-tight uppercase">
               {title}
             </h2>
-            <div 
-              className="text-xl font-semibold opacity-50 leading-tight max-w-md" 
-              dangerouslySetInnerHTML={{ __html: subtitle }} 
-            />
+            
+            {/* Sub-project Navigation or Subtitle */}
+            {navItems ? (
+              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`text-xl font-bold transition-all ${
+                      item.active 
+                        ? "text-black underline underline-offset-8 decoration-2" 
+                        : "text-black/30 hover:text-black/60"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            ) : subtitle ? (
+              <div 
+                className="text-xl font-semibold opacity-50 leading-tight max-w-md" 
+                dangerouslySetInnerHTML={{ __html: subtitle }} 
+              />
+            ) : null}
           </div>
         </div>
 
@@ -49,8 +77,9 @@ export default function ProjectLayout({
           {children}
         </div>
 
-        <div className="flex items-center gap-8 mt-auto pt-8 md:pt-0 bg-white">
-          <div className="flex items-center gap-6 text-3xl">
+        {/* Sticky Mobile Nav / Desktop Bottom Nav */}
+        <div className="fixed bottom-0 left-0 w-full p-8 bg-white/90 backdrop-blur-md border-t border-zinc-100 z-50 md:relative md:bottom-auto md:left-auto md:w-auto md:p-0 md:bg-transparent md:backdrop-blur-none md:border-t-0 md:mt-auto md:pt-0">
+          <div className="flex items-center gap-6 text-3xl max-w-md md:max-w-none mx-auto md:mx-0">
             <Link
               href={backLink}
               className="hover:-translate-x-1 transition-transform text-black"
@@ -88,8 +117,8 @@ export default function ProjectLayout({
       {/* Spacer for Desktop since the left panel is fixed */}
       <div className="hidden md:block w-1/2" />
 
-      {/* Right Content - Scrollable Mockup Space with Zinc Background */}
-      <div className="w-full md:w-1/2 min-h-screen bg-zinc-50 flex flex-col items-center py-24 px-8 space-y-24">
+      {/* Right Content - Vertically Centered */}
+      <div className="w-full md:w-1/2 min-h-screen bg-zinc-50 flex flex-col items-center justify-center py-24 px-8 space-y-24">
         {rightContent}
       </div>
     </main>
