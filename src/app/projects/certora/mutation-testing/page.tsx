@@ -1,26 +1,26 @@
 import Image from "next/image";
-import certoraGoalImg from "@/assets/certora-goal.png";
+import mutationTestingGoalImg from "@/assets/certora-mutation-testing-goal.png";
 import ProjectLayout from "@/components/ProjectLayout";
 
-export default function CertoraGoal() {
+export default function CertoraMutationTestingGoal() {
   const navItems = [
-    { label: "VSCode Plugin", href: "/projects/certora", active: true },
+    { label: "VSCode Plugin", href: "/projects/certora" },
     { label: "Prover report", href: "/projects/certora/prover-report" },
     { label: "Prover dashboard", href: "/projects/certora/prover-dashboard" },
-    { label: "Mutation testing", href: "/projects/certora/mutation-testing" },
+    { label: "Mutation testing", href: "/projects/certora/mutation-testing", active: true },
   ];
 
   return (
     <ProjectLayout
       title="CERTORA"
       navItems={navItems}
-      backLink="/"
-      nextLink="/projects/certora/problem"
+      backLink="/projects/certora/prover-dashboard/part"
+      nextLink="/projects/certora/mutation-testing/problem"
       rightContent={
         <div className="relative w-full max-w-[600px] aspect-[944/530]">
           <Image
-            src={certoraGoalImg}
-            alt="Certora + VSCode"
+            src={mutationTestingGoalImg}
+            alt="Certora Mutation Testing Goal"
             fill
             className="object-contain"
           />
@@ -32,10 +32,10 @@ export default function CertoraGoal() {
         GOAL
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        To develop a user-friendly VSCode plugin, started by Evil Martinas studio, 
-        that activates Certora Prover run and tracks its progress. I was aimed 
-        to create an intuitive interface to empower non-technical users to effectively 
-        utilize the Prover.
+        Building user-friendly UI for the Certora Prover report. 
+        The revamped dynamic interface should replace the old table layout, 
+        allowing non-technical users to effortlessly monitor the CertoraRun 
+        command&apos;s progress and view results on a straightforward HTML page.
       </p>
     </ProjectLayout>
   );

@@ -1,12 +1,12 @@
 import Image from "next/image";
-import certoraResultImg from "@/assets/certora-result.png";
+import proverDashboardResultImg from "@/assets/certora-prover-dashboard-result.png";
 import ProjectLayout from "@/components/ProjectLayout";
 
-export default function CertoraResult() {
+export default function CertoraProverDashboardResult() {
   const navItems = [
-    { label: "VSCode Plugin", href: "/projects/certora", active: true },
+    { label: "VSCode Plugin", href: "/projects/certora" },
     { label: "Prover report", href: "/projects/certora/prover-report" },
-    { label: "Prover dashboard", href: "/projects/certora/prover-dashboard" },
+    { label: "Prover dashboard", href: "/projects/certora/prover-dashboard", active: true },
     { label: "Mutation testing", href: "/projects/certora/mutation-testing" },
   ];
 
@@ -14,13 +14,13 @@ export default function CertoraResult() {
     <ProjectLayout
       title="CERTORA"
       navItems={navItems}
-      backLink="/projects/certora/problem"
-      nextLink="/projects/certora/part"
+      backLink="/projects/certora/prover-dashboard/problem"
+      nextLink="/projects/certora/prover-dashboard/part"
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
           <Image
-            src={certoraResultImg}
-            alt="Certora VSCode Plugin Interface"
+            src={proverDashboardResultImg}
+            alt="Certora Prover Dashboard Result"
             fill
             className="object-contain"
           />
@@ -32,8 +32,10 @@ export default function CertoraResult() {
         RESULT
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        Configuring & running certoraRun using VSCode UI, sometimes running 
-        apps from command line interface can be just to many lines to type.
+        The new user-friendly UI for the Certora Prover report features a 
+        dynamic interface that replaces the outdated table layout. This design 
+        enables non-technical users to easily track the progress of the 
+        CertoraRun command and view results on a clear HTML page.
       </p>
     </ProjectLayout>
   );

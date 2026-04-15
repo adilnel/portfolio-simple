@@ -9,6 +9,7 @@ export default function DelekSuccess() {
       title="DELEK APP"
       subtitle="Convenience Store Upscale<br/>iOS & Android"
       backLink="/projects/delek/solution"
+      nextLink={{ label: "BRANDS", href: "/brands" }}
       rightContent={
         <div className="relative w-full max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
           <Image

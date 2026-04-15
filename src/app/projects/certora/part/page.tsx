@@ -6,8 +6,8 @@ export default function CertoraPart() {
   const navItems = [
     { label: "VSCode Plugin", href: "/projects/certora", active: true },
     { label: "Prover report", href: "/projects/certora/prover-report" },
-    { label: "Prover dashboard", href: "#" },
-    { label: "Mutation testing", href: "#" },
+    { label: "Prover dashboard", href: "/projects/certora/prover-dashboard" },
+    { label: "Mutation testing", href: "/projects/certora/mutation-testing" },
   ];
 
   return (
@@ -15,7 +15,7 @@ export default function CertoraPart() {
       title="CERTORA"
       navItems={navItems}
       backLink="/projects/certora/result"
-      nextLink="/projects/certora/prover-report"
+      nextLink={{ label: "Prover report", href: "/projects/certora/prover-report" }}
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
           <Image

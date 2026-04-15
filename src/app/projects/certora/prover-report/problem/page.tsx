@@ -1,8 +1,8 @@
 import Image from "next/image";
-import proverReportGoalImg from "@/assets/certora-prover-report-goal.png";
+import proverReportProblemImg from "@/assets/certora-prover-report-problem.png";
 import ProjectLayout from "@/components/ProjectLayout";
 
-export default function CertoraProverReportGoal() {
+export default function CertoraProverReportProblem() {
   const navItems = [
     { label: "VSCode Plugin", href: "/projects/certora" },
     { label: "Prover report", href: "/projects/certora/prover-report", active: true },
@@ -14,13 +14,13 @@ export default function CertoraProverReportGoal() {
     <ProjectLayout
       title="CERTORA"
       navItems={navItems}
-      backLink="/projects/certora/part"
-      nextLink="/projects/certora/prover-report/problem"
+      backLink="/projects/certora/prover-report"
+      nextLink="/projects/certora/prover-report/result"
       rightContent={
-        <div className="relative w-full max-w-[600px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530]">
           <Image
-            src={proverReportGoalImg}
-            alt="Certora Prover Report"
+            src={proverReportProblemImg}
+            alt="Certora Prover Report Problem"
             fill
             className="object-contain"
           />
@@ -28,8 +28,8 @@ export default function CertoraProverReportGoal() {
       }
     >
       <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
-        <span className="font-normal block">THE</span>
-        GOAL
+        <span className="font-normal block">The</span>
+        Problem
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
         Building user-friendly UI for the Certora Prover report. 

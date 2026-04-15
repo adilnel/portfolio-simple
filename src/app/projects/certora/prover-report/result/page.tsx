@@ -1,8 +1,8 @@
 import Image from "next/image";
-import proverReportGoalImg from "@/assets/certora-prover-report-goal.png";
+import proverReportResultImg from "@/assets/certora-prover-report-result.png";
 import ProjectLayout from "@/components/ProjectLayout";
 
-export default function CertoraProverReportGoal() {
+export default function CertoraProverReportResult() {
   const navItems = [
     { label: "VSCode Plugin", href: "/projects/certora" },
     { label: "Prover report", href: "/projects/certora/prover-report", active: true },
@@ -14,13 +14,13 @@ export default function CertoraProverReportGoal() {
     <ProjectLayout
       title="CERTORA"
       navItems={navItems}
-      backLink="/projects/certora/part"
-      nextLink="/projects/certora/prover-report/problem"
+      backLink="/projects/certora/prover-report/problem"
+      nextLink="/projects/certora/prover-report/part"
       rightContent={
-        <div className="relative w-full max-w-[600px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530]">
           <Image
-            src={proverReportGoalImg}
-            alt="Certora Prover Report"
+            src={proverReportResultImg}
+            alt="Certora Prover Report Result"
             fill
             className="object-contain"
           />
@@ -28,14 +28,14 @@ export default function CertoraProverReportGoal() {
       }
     >
       <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
-        <span className="font-normal block">THE</span>
-        GOAL
+        <span className="font-normal block">The</span>
+        RESULT
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        Building user-friendly UI for the Certora Prover report. 
-        The revamped dynamic interface should replace the old table layout, 
-        allowing non-technical users to effortlessly monitor the CertoraRun 
-        command&apos;s progress and view results on a straightforward HTML page.
+        The new user-friendly UI for the Certora Prover report features a dynamic 
+        interface that replaces the outdated table layout. This design enables 
+        non-technical users to easily track the progress of the CertoraRun 
+        command and view results on a clear HTML page.
       </p>
     </ProjectLayout>
   );

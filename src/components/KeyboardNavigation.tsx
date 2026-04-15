@@ -10,6 +10,17 @@ const ROUTES = [
   "/projects/certora/result",
   "/projects/certora/part",
   "/projects/certora/prover-report",
+  "/projects/certora/prover-report/problem",
+  "/projects/certora/prover-report/result",
+  "/projects/certora/prover-report/part",
+  "/projects/certora/prover-dashboard",
+  "/projects/certora/prover-dashboard/problem",
+  "/projects/certora/prover-dashboard/result",
+  "/projects/certora/prover-dashboard/part",
+  "/projects/certora/mutation-testing",
+  "/projects/certora/mutation-testing/problem",
+  "/projects/certora/mutation-testing/result",
+  "/projects/certora/mutation-testing/part",
   "/projects",
   "/projects/problem",
   "/projects/proposal",
@@ -17,6 +28,8 @@ const ROUTES = [
   "/projects/delek/problem",
   "/projects/delek/solution",
   "/projects/delek/success",
+  "/brands",
+  "/thanks",
 ];
 
 export default function KeyboardNavigation() {

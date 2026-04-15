@@ -29,7 +29,7 @@ export default function ProjectLayout({
   return (
     <main className="min-h-screen bg-white text-black flex flex-col md:flex-row overflow-x-hidden pb-32 md:pb-0">
       {/* Left Content - Fixed on Desktop */}
-      <div className="w-full md:w-1/2 md:fixed md:left-0 md:top-0 md:h-screen flex flex-col justify-between p-8 md:p-24 lg:pl-44 bg-white z-10 border-r border-zinc-100">
+      <div className="w-full md:w-1/2 md:fixed md:left-0 md:top-0 md:h-screen flex flex-col justify-between p-8 md:pt-[132px] md:pb-24 md:px-24 lg:pl-[176px] bg-white z-10 border-r border-zinc-100">
         <div className="space-y-4">
           <Link
             href="/"
@@ -41,21 +41,21 @@ export default function ProjectLayout({
             Back to Home
           </Link>
 
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight uppercase">
+          <div className="space-y-6">
+            <h2 className="text-[32px] font-bold tracking-tight uppercase leading-none">
               {title}
             </h2>
             
             {/* Sub-project Navigation or Subtitle */}
             {navItems ? (
-              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+              <div className="flex flex-wrap gap-x-10 gap-y-4 pt-2">
                 {navItems.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`text-xl font-bold transition-all ${
+                    className={`text-2xl font-bold transition-all ${
                       item.active 
-                        ? "text-black underline underline-offset-8 decoration-2" 
+                        ? "text-black underline underline-offset-[12px] decoration-2" 
                         : "text-black/30 hover:text-black/60"
                     }`}
                   >
@@ -65,7 +65,7 @@ export default function ProjectLayout({
               </div>
             ) : subtitle ? (
               <div 
-                className="text-xl font-semibold opacity-50 leading-tight max-w-md" 
+                className="text-2xl font-semibold opacity-50 leading-tight max-w-md" 
                 dangerouslySetInnerHTML={{ __html: subtitle }} 
               />
             ) : null}

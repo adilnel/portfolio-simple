@@ -6,8 +6,8 @@ export default function CertoraProblem() {
   const navItems = [
     { label: "VSCode Plugin", href: "/projects/certora", active: true },
     { label: "Prover report", href: "/projects/certora/prover-report" },
-    { label: "Prover dashboard", href: "#" },
-    { label: "Mutation testing", href: "#" },
+    { label: "Prover dashboard", href: "/projects/certora/prover-dashboard" },
+    { label: "Mutation testing", href: "/projects/certora/mutation-testing" },
   ];
 
   return (
