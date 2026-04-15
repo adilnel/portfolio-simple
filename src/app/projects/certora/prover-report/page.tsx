@@ -1,11 +1,11 @@
 import Image from "next/image";
-import certoraGoalImg from "@/assets/certora-goal.png";
+import proverReportGoalImg from "@/assets/certora-prover-report-goal.png";
 import ProjectLayout from "@/components/ProjectLayout";
 
-export default function CertoraGoal() {
+export default function CertoraProverReportGoal() {
   const navItems = [
-    { label: "VSCode Plugin", href: "/projects/certora", active: true },
-    { label: "Prover report", href: "/projects/certora/prover-report" },
+    { label: "VSCode Plugin", href: "/projects/certora" },
+    { label: "Prover report", href: "/projects/certora/prover-report", active: true },
     { label: "Prover dashboard", href: "#" },
     { label: "Mutation testing", href: "#" },
   ];
@@ -14,13 +14,13 @@ export default function CertoraGoal() {
     <ProjectLayout
       title="CERTORA"
       navItems={navItems}
-      backLink="/"
-      nextLink="/projects/certora/problem"
+      backLink="/projects/certora/part"
+      nextLink="/projects"
       rightContent={
         <div className="relative w-full max-w-[600px] aspect-[944/530]">
           <Image
-            src={certoraGoalImg}
-            alt="Certora + VSCode"
+            src={proverReportGoalImg}
+            alt="Certora Prover Report"
             fill
             className="object-contain"
           />
@@ -32,10 +32,10 @@ export default function CertoraGoal() {
         GOAL
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        To develop a user-friendly VSCode plugin, started by Evil Martinas studio, 
-        that activates Certora Prover run and tracks its progress. I was aimed 
-        to create an intuitive interface to empower non-technical users to effectively 
-        utilize the Prover.
+        Building user-friendly UI for the Certora Prover report. 
+        The revamped dynamic interface should replace the old table layout, 
+        allowing non-technical users to effortlessly monitor the CertoraRun 
+        command&apos;s progress and view results on a straightforward HTML page.
       </p>
     </ProjectLayout>
   );

@@ -1,8 +1,8 @@
 import Image from "next/image";
-import certoraGoalImg from "@/assets/certora-goal.png";
+import certoraProblemImg from "@/assets/certora-problem.png";
 import ProjectLayout from "@/components/ProjectLayout";
 
-export default function CertoraGoal() {
+export default function CertoraProblem() {
   const navItems = [
     { label: "VSCode Plugin", href: "/projects/certora", active: true },
     { label: "Prover report", href: "/projects/certora/prover-report" },
@@ -14,13 +14,13 @@ export default function CertoraGoal() {
     <ProjectLayout
       title="CERTORA"
       navItems={navItems}
-      backLink="/"
-      nextLink="/projects/certora/problem"
+      backLink="/projects/certora"
+      nextLink="/projects/certora/result"
       rightContent={
-        <div className="relative w-full max-w-[600px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530]">
           <Image
-            src={certoraGoalImg}
-            alt="Certora + VSCode"
+            src={certoraProblemImg}
+            alt="Certora CLI Interface"
             fill
             className="object-contain"
           />
@@ -28,14 +28,12 @@ export default function CertoraGoal() {
       }
     >
       <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
-        <span className="font-normal block">THE</span>
-        GOAL
+        <span className="font-normal block">The</span>
+        Problem
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        To develop a user-friendly VSCode plugin, started by Evil Martinas studio, 
-        that activates Certora Prover run and tracks its progress. I was aimed 
-        to create an intuitive interface to empower non-technical users to effectively 
-        utilize the Prover.
+        The challenge I faced was to simplify the process of using certoraRun through the VSCode interface, 
+        making it more accessible than the cumbersome command line interface.
       </p>
     </ProjectLayout>
   );

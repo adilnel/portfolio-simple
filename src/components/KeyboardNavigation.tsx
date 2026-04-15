@@ -6,6 +6,10 @@ import { useRouter, usePathname } from "next/navigation";
 const ROUTES = [
   "/",
   "/projects/certora",
+  "/projects/certora/problem",
+  "/projects/certora/result",
+  "/projects/certora/part",
+  "/projects/certora/prover-report",
   "/projects",
   "/projects/problem",
   "/projects/proposal",
