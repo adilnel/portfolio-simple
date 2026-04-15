@@ -11,6 +11,7 @@ const ROUTES = [
   "/projects/delek",
   "/projects/delek/problem",
   "/projects/delek/solution",
+  "/projects/delek/success",
 ];
 
 export default function KeyboardNavigation() {
