@@ -32,6 +32,7 @@ export default function CertoraPart() {
   return (
     <ProjectLayout
       title="CERTORA"
+      subtitle="Smart Contract Auditing using FV"
       navItems={navItems}
       backLink="/projects/certora/result"
       nextLink={{ label: "Prover report", href: "/projects/certora/prover-report" }}
