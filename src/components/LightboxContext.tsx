@@ -51,7 +51,7 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
       {children}
       {isOpen && (
         <div 
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-200 cursor-pointer"
           onClick={closeLightbox}
         >
           {/* Close Button */}

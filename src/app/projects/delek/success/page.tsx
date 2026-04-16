@@ -23,8 +23,9 @@ export default function DelekSuccess() {
             alt="Delek App Success Interface"
           />
           {/* Award Badge Overlay */}
-          <div 
-            className="absolute top-[37%] left-1/2 -translate-x-1/2 -rotate-6 w-[140px] h-[140px] md:w-[200px] md:h-[200px] cursor-pointer hover:scale-105 transition-transform z-10"
+          <button 
+            type="button"
+            className="absolute top-[37%] left-1/2 -translate-x-1/2 -rotate-6 w-[140px] h-[140px] md:w-[200px] md:h-[200px] cursor-pointer hover:scale-105 transition-transform z-10 border-none bg-transparent p-0 m-0 outline-none"
             onClick={(e) => {
               e.stopPropagation();
               openLightbox([delekAwardImg]);
@@ -36,7 +37,7 @@ export default function DelekSuccess() {
               fill
               className="object-contain drop-shadow-xl"
             />
-          </div>
+          </button>
         </div>
       }
     >
