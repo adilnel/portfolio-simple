@@ -15,6 +15,7 @@ export default function CertoraMutationTestingGoal() {
   return (
     <ProjectLayout
       title="CERTORA"
+      subtitle="Smart Contract Auditing using FV"
       navItems={navItems}
       backLink="/projects/certora/prover-dashboard/part"
       nextLink="/projects/certora/mutation-testing/problem"
