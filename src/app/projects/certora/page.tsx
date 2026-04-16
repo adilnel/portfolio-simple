@@ -19,12 +19,14 @@ export default function CertoraGoal() {
       backLink="/"
       nextLink="/projects/certora/problem"
       rightContent={
-        <div className="relative w-full max-w-[600px] aspect-[944/530]">
-          <ProjectImage
-            src={certoraGoalImg}
-            alt="Certora + VSCode"
-            priority
-          />
+        <div className="flex items-center justify-center w-full h-full">
+          <div className="relative w-full max-w-[600px] aspect-[944/530]">
+            <ProjectImage
+              src={certoraGoalImg}
+              alt="Certora + VSCode"
+              priority
+            />
+          </div>
         </div>
       }
     >

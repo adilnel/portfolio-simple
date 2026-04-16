@@ -19,12 +19,14 @@ export default function CertoraMutationTestingGoal() {
       backLink="/projects/certora/prover-dashboard/part"
       nextLink="/projects/certora/mutation-testing/problem"
       rightContent={
-        <div className="relative w-full max-w-[480px] aspect-[944/530]">
-          <ProjectImage
-            src={gambitLogo}
-            alt="Certora Mutation Testing - Gambit"
-            priority
-          />
+        <div className="flex items-center justify-center w-full h-full">
+          <div className="relative w-full max-w-[480px] aspect-[944/530]">
+            <ProjectImage
+              src={gambitLogo}
+              alt="Certora Mutation Testing - Gambit"
+              priority
+            />
+          </div>
         </div>
       }
     >
