@@ -1,3 +1,5 @@
+"use client";
+
 import ProjectLayout from "@/components/ProjectLayout";
 
 export default function ThankYou() {

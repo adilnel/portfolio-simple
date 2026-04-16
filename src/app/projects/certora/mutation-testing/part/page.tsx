@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import mutationTestingPartImg from "@/assets/certora-mutation-testing-part.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraMutationTestingPart() {
   const navItems = [
@@ -18,16 +20,15 @@ export default function CertoraMutationTestingPart() {
       nextLink={{ label: "AUTOCAD", href: "/projects" }}
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
-          <Image
+          <ProjectImage
             src={mutationTestingPartImg}
-            alt="Certora Mutation Testing Part"
-            fill
-            className="object-contain"
+            alt="Certora Mutation Testing Flowchart"
           />
         </div>
       }
     >
       <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
+
         <span className="font-normal block">My</span>
         Part
       </h1>

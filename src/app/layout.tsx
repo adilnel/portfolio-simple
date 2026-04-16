@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import KeyboardNavigation from "@/components/KeyboardNavigation";
+import { LightboxProvider } from "@/components/LightboxContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,8 +31,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <KeyboardNavigation />
-        {children}
+        <LightboxProvider>
+          <KeyboardNavigation />
+          {children}
+        </LightboxProvider>
       </body>
       <GoogleAnalytics gaId="G-2T090FHWFE" />
     </html>

@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import proverReportProblemImg from "@/assets/certora-prover-report-problem.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraProverReportProblem() {
   const navItems = [
@@ -18,11 +20,9 @@ export default function CertoraProverReportProblem() {
       nextLink="/projects/certora/prover-report/result"
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
-          <Image
+          <ProjectImage
             src={proverReportProblemImg}
             alt="Certora Prover Report Problem"
-            fill
-            className="object-contain"
           />
         </div>
       }

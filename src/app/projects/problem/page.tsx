@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import problemImg from "@/assets/problem.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function AutoCADProblem() {
   return (
@@ -11,11 +13,9 @@ export default function AutoCADProblem() {
       nextLink="/projects/proposal"
       rightContent={
         <div className="relative w-full max-w-[280px] md:max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
-          <Image
+          <ProjectImage
             src={problemImg}
             alt="AutoCAD Mobile Problem Interface"
-            fill
-            className="object-cover"
           />
         </div>
       }

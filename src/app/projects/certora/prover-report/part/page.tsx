@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import proverReportPartImg from "@/assets/certora-prover-report-part.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraProverReportPart() {
   const navItems = [
@@ -18,11 +20,9 @@ export default function CertoraProverReportPart() {
       nextLink={{ label: "Prover dashboard", href: "/projects/certora/prover-dashboard" }}
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
-          <Image
+          <ProjectImage
             src={proverReportPartImg}
             alt="Certora Prover Report Flowchart"
-            fill
-            className="object-contain"
           />
         </div>
       }

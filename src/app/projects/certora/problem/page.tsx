@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import certoraProblemImg from "@/assets/certora-problem.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraProblem() {
   const navItems = [
@@ -18,11 +20,9 @@ export default function CertoraProblem() {
       nextLink="/projects/certora/result"
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
-          <Image
+          <ProjectImage
             src={certoraProblemImg}
             alt="Certora CLI Interface"
-            fill
-            className="object-contain"
           />
         </div>
       }

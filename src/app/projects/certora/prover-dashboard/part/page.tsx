@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import proverDashboardPartImg from "@/assets/certora-prover-dashboard-part.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraProverDashboardPart() {
   const navItems = [
@@ -15,19 +17,18 @@ export default function CertoraProverDashboardPart() {
       title="CERTORA"
       navItems={navItems}
       backLink="/projects/certora/prover-dashboard/result"
-      nextLink={{ label: "Mutation Testing", href: "/projects/certora/mutation-testing" }}
+      nextLink={{ label: "Mutation testing", href: "/projects/certora/mutation-testing" }}
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
-          <Image
+          <ProjectImage
             src={proverDashboardPartImg}
             alt="Certora Prover Dashboard Part"
-            fill
-            className="object-contain"
           />
         </div>
       }
     >
       <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
+
         <span className="font-normal block">My</span>
         Part
       </h1>

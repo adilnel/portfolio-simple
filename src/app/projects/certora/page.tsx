@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import certoraGoalImg from "@/assets/certora-goal.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraGoal() {
   const navItems = [
@@ -18,11 +20,10 @@ export default function CertoraGoal() {
       nextLink="/projects/certora/problem"
       rightContent={
         <div className="relative w-full max-w-[600px] aspect-[944/530]">
-          <Image
+          <ProjectImage
             src={certoraGoalImg}
             alt="Certora + VSCode"
-            fill
-            className="object-contain"
+            priority
           />
         </div>
       }

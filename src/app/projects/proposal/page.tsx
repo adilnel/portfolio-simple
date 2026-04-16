@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import proposalImg from "@/assets/proposal.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function AutoCADProposal() {
   return (
@@ -11,11 +13,9 @@ export default function AutoCADProposal() {
       nextLink={{ label: "DELEK", href: "/projects/delek" }}
       rightContent={
         <div className="relative w-full max-w-[280px] md:max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
-          <Image
+          <ProjectImage
             src={proposalImg}
             alt="AutoCAD Mobile Proposal Interface"
-            fill
-            className="object-cover"
           />
         </div>
       }
