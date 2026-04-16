@@ -36,7 +36,6 @@ export default function CertoraProverDashboardPart() {
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
         I led the design process by interviewing security researchers to identify workflow bottlenecks. I mapped the user flows for managing multiple jobs and created the wireframes and final UI to transform isolated data points into a cohesive monitoring system.
-        to date user experience.
       </p>
     </ProjectLayout>
   );
