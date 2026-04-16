@@ -136,7 +136,7 @@ export default function ProjectLayout({
             <span className="group-hover:-translate-x-1 transition-transform">
               ←
             </span>
-            Back to Home
+            Back to Start
           </Link>
 
           <div className="space-y-6">
