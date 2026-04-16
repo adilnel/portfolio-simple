@@ -115,7 +115,7 @@ export default function BrandsAndTools() {
         </div>
       }
     >
-      <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mt-24">
+      <h1 className="text-5xl md:text-7xl font-bold uppercase leading-none">
         <span className="font-normal block">BRANDS</span>
         & TOOLS
       </h1>

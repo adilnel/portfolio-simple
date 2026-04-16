@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="relative flex flex-col min-h-screen bg-black text-white px-8 pt-32 pb-16 sm:px-24 sm:pt-40">
       <div className="flex flex-col gap-6">
-        <h1 className="text-6xl sm:text-[96px] font-bold leading-none tracking-tight uppercase">
+        <h1 className="text-5xl sm:text-[80px] font-bold leading-none tracking-tight uppercase">
           <span className="font-normal block">Quick</span>
           <span>Portfolio</span>
         </h1>
@@ -26,7 +26,7 @@ export default function Home() {
               AI-Powered Presentation
             </p>
             <p className="text-sm text-zinc-500 leading-relaxed">
-              This interactive portfolio was built and refined using <span className="text-zinc-300">Gemini CLI</span> with the <span className="text-zinc-300">Figma MCP server</span>, demonstrating a seamless design-to-code workflow.
+              I have developed this presentation and refined using <span className="text-zinc-300">Gemini CLI</span> with the <span className="text-zinc-300">Figma MCP server</span>, demonstrating a seamless design-to-code workflow.
             </p>
           </div>
         </div>

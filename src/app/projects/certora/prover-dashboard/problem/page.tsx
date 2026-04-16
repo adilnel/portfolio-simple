@@ -27,7 +27,7 @@ export default function CertoraProverDashboardProblem() {
         </div>
       }
     >
-      <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
+      <h1 className="text-5xl md:text-7xl font-bold uppercase leading-none mb-6">
         <span className="font-normal block">The</span>
         Problem
       </h1>
