@@ -19,7 +19,11 @@ export const metadata: Metadata = {
   title: "Avi Adlin | Portfolio",
   description: "Quick Portfolio by Avi Adlin",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico?v=2" },
+      { url: "/icon.svg?v=2", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png?v=2",
   },
 };
 
