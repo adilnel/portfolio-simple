@@ -4,7 +4,7 @@ import Image from "next/image";
 import ProjectLayout from "@/components/ProjectLayout";
 
 // Client Logos
-import delekLogo from "@/assets/brand-delek.svg";
+import geminiCli from "@/assets/tool-gemeni-cli.svg";
 import libraLogo from "@/assets/brand-libra.svg";
 import viaLogo from "@/assets/brand-via.svg";
 import refaelLogo from "@/assets/brand-refael.svg";
@@ -22,17 +22,16 @@ import principleLogo from "@/assets/tool-principle.svg";
 import axureLogo from "@/assets/tool-axure.svg";
 import aeLogo from "@/assets/tool-ae.svg";
 import psdLogo from "@/assets/tool-psd.svg";
-import cinema4dLogo from "@/assets/tool-cinema4d.png";
+import cinema4dLogo from "@/assets/tool-cinema4d.svg";
 
 export default function BrandsAndTools() {
   const clients = [
-    { src: delekLogo, alt: "Delek" },
     { src: libraLogo, alt: "Libra" },
     { src: viaLogo, alt: "Via" },
     { src: refaelLogo, alt: "Rafael" },
     { src: vesttoo1, alt: "Vesttoo" },
-    { src: bezeq1, alt: "Bezeq" },
     { src: tytoLogo, alt: "TytoCare" },
+    { src: bezeq1, alt: "Bezeq" },
     { src: hyprLogo, alt: "Hypr" },
   ];
 
@@ -42,6 +41,7 @@ export default function BrandsAndTools() {
       items: [
         { src: figmaLogo, alt: "Figma" },
         { src: sketchLogo, alt: "Sketch" },
+        { src: geminiCli, alt: "Gemini CLI" },
       ],
     },
     {
@@ -96,9 +96,16 @@ export default function BrandsAndTools() {
                   <p className="text-lg font-bold opacity-50 w-48 leading-tight shrink-0">
                     {group.category}
                   </p>
-                  <div className="flex flex-wrap gap-8">
+                  <div className="flex flex-wrap gap-8 items-center">
                     {group.items.map((tool, j) => (
-                      <div key={j} className="relative h-10 w-10 shrink-0">
+                      <div 
+                        key={j} 
+                        className={`relative shrink-0 ${
+                          tool.alt === "Cinema 4D" || tool.alt === "Axure" 
+                            ? "h-10 w-25" 
+                            : "h-10 w-10"
+                        }`}
+                      >
                         <Image
                           src={tool.src}
                           alt={tool.alt}
