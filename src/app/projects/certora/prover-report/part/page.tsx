@@ -32,13 +32,7 @@ export default function CertoraProverReportPart() {
         Part
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        In my role, I researched and interviewed security researchers using the 
-        Certora Prover tool, which helped me plan the proof of concept. I created 
-        flow charts and wireframes, ultimately leading to the redesign of the 
-        report. The new user-friendly UI features a dynamic interface that 
-        replaces the outdated table layout, allowing also non-technical users to 
-        easily track the CertoraRun command&apos;s progress and view results with up 
-        to date user experience.
+        I interviewed security researchers to define the POC, then used flowcharts and wireframes to redesign the legacy report into a dynamic, modern interface for all users.
       </p>
     </ProjectLayout>
   );

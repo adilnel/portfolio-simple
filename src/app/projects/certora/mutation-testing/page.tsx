@@ -35,10 +35,7 @@ export default function CertoraMutationTestingGoal() {
         GOAL
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        Building user-friendly UI for the Certora Prover report. 
-        The revamped dynamic interface should replace the old table layout, 
-        allowing non-technical users to effortlessly monitor the CertoraRun 
-        command&apos;s progress and view results on a straightforward HTML page.
+        Integrate Gambit mutation testing into the Certora ecosystem by creating a visual interface that allows developers to measure the effectiveness of their verification specs. The goal was to provide a clear way to see if mutants are &quot;caught&quot; or &quot;survived,&quot; helping users strengthen their formal verification suites.
       </p>
     </ProjectLayout>
   );

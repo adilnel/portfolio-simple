@@ -33,8 +33,7 @@ export default function CertoraResult() {
         RESULT
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        Configuring & running certoraRun using VSCode UI, sometimes running 
-        apps from command line interface can be just to many lines to type.
+        Solves the complexity of long command-line arguments, we created a functional VS Code plugin that centralizes the Certora workflow. The solution provides a user-friendly setup for easy configuration and running the Prover.
       </p>
     </ProjectLayout>
   );

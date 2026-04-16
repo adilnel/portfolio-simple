@@ -51,8 +51,7 @@ export default function CertoraPart() {
         Part
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        Configuring & running certoraRun using VSCode UI, sometimes running 
-        apps from command line interface can be just to many line to type.
+        I led the UX process by interviewing researchers, mapping the complex setup flow, designing the VS Code interface, and managing the developer handoff.
       </p>
     </ProjectLayout>
   );

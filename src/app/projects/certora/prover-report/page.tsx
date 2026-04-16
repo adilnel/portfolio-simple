@@ -35,10 +35,7 @@ export default function CertoraProverReportGoal() {
         GOAL
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        Building user-friendly UI for the Certora Prover report. 
-        The revamped dynamic interface should replace the old table layout, 
-        allowing non-technical users to effortlessly monitor the CertoraRun 
-        command&apos;s progress and view results on a straightforward HTML page.
+        Transform the Certora Prover report into a user-friendly interface that allows all users to effortlessly monitor progress and results without the clutter of legacy table
       </p>
     </ProjectLayout>
   );

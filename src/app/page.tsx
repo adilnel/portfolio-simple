@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import ProjectLayout from "@/components/ProjectLayout";
 import GeminiLogo from "@/components/GeminiLogo";
