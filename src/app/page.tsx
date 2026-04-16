@@ -11,6 +11,7 @@ export default function Home() {
     <ProjectLayout
       title=""
       darkMode={true}
+      isHome={true}
       isMobileImageHidden={true}
       nextLink={{ label: "Projects", href: "/projects/certora" }}
       rightContent={

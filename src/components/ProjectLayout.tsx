@@ -21,6 +21,7 @@ interface ProjectLayoutProps {
   darkMode?: boolean;
   isMobileImageHidden?: boolean;
   isMobileContentCentered?: boolean;
+  isHome?: boolean;
 }
 
 export default function ProjectLayout({
@@ -35,6 +36,7 @@ export default function ProjectLayout({
   darkMode = false,
   isMobileImageHidden = false,
   isMobileContentCentered = false,
+  isHome = false,
 }: ProjectLayoutProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftGradient, setShowLeftGradient] = useState(false);
@@ -139,16 +141,16 @@ export default function ProjectLayout({
   return (
     <main className={`min-h-screen ${bgColor} ${textColor} flex flex-col md:flex-row overflow-x-hidden pb-32 md:pb-0`}>
       {/* Left Content - Fixed on Desktop, full height if no right panel */}
-      <div className={`w-full ${hideRightPanel ? "md:w-full min-h-screen" : "md:w-1/2"} md:fixed md:left-0 md:top-0 md:h-screen flex flex-col justify-between pt-4 pb-8 px-8 md:pt-[100px] md:pb-24 md:px-24 lg:pl-[176px] ${bgColor} z-10 ${!hideRightPanel ? `border-r ${borderColor}` : ""}`}>
+      <div className={`w-full ${hideRightPanel ? "md:w-full min-h-screen" : "md:w-1/2"} md:fixed md:left-0 md:top-0 md:h-screen flex flex-col justify-between pt-4 pb-8 px-8 md:pt-[100px] md:pb-24 md:px-24 ${bgColor} z-10 ${!hideRightPanel ? `border-r ${borderColor}` : ""}`}>
         <div className="space-y-4">
-          {backLink && (
+          {!isHome && (
             <Link
-              href={backLink}
-              className={`inline-flex items-center gap-2 ${darkMode ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black"} transition-colors mb-8 group`}
+              href="/"
+              className={`inline-flex items-center gap-2 ${darkMode ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black"} transition-colors mb-4 group`}
             >
               <span className="flex items-center">
                 <span className="mr-2">←</span>
-                Back to Start
+                Back to Home
               </span>
             </Link>
           )}

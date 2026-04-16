@@ -73,7 +73,7 @@ export default function BrandsAndTools() {
           {/* Clients Section */}
           <section>
             <h3 className="text-2xl font-bold mb-8">Some other clients</h3>
-            <div className="grid grid-cols-4 gap-x-8 gap-y-12 opacity-50">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-12 opacity-50 justify-items-center sm:justify-items-start">
               {clients.map((client, i) => (
                 <div key={i} className="relative h-12 w-24">
                   <Image
@@ -92,8 +92,8 @@ export default function BrandsAndTools() {
             <h3 className="text-2xl font-bold mb-8">Tool I Use</h3>
             <div className="space-y-12">
               {tools.map((group, i) => (
-                <div key={i} className="flex items-center gap-8">
-                  <p className="text-lg font-bold opacity-50 w-48 leading-tight shrink-0">
+                <div key={i} className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
+                  <p className="text-lg font-bold opacity-50 md:w-48 leading-tight shrink-0">
                     {group.category}
                   </p>
                   <div className="flex flex-wrap gap-8 items-center">
@@ -102,7 +102,7 @@ export default function BrandsAndTools() {
                         key={j} 
                         className={`relative shrink-0 ${
                           tool.alt === "Cinema 4D" || tool.alt === "Axure" 
-                            ? "h-10 w-25" 
+                            ? "h-20 w-20" 
                             : "h-10 w-10"
                         }`}
                       >
