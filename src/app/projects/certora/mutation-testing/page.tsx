@@ -1,6 +1,6 @@
 "use client";
 
-import mutationTestingGoalImg from "@/assets/certora-mutation-testing-goal.png";
+import gambitLogo from "@/assets/certora-gambit-logo.png";
 import ProjectLayout from "@/components/ProjectLayout";
 import ProjectImage from "@/components/ProjectImage";
 
@@ -21,8 +21,8 @@ export default function CertoraMutationTestingGoal() {
       rightContent={
         <div className="relative w-full max-w-[600px] aspect-[944/530]">
           <ProjectImage
-            src={mutationTestingGoalImg}
-            alt="Certora Mutation Testing Goal"
+            src={gambitLogo}
+            alt="Certora Mutation Testing - Gambit"
             priority
           />
         </div>
