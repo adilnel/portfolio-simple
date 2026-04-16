@@ -19,7 +19,7 @@ export default function CertoraProverReportProblem() {
       backLink="/projects/certora/prover-report"
       nextLink="/projects/certora/prover-report/result"
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
           <ProjectImage
             src={proverReportProblemImg}
             alt="Certora Prover Report Problem"

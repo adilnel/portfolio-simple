@@ -19,7 +19,7 @@ export default function CertoraMutationTestingPart() {
       backLink="/projects/certora/mutation-testing/result"
       nextLink={{ label: "AUTOCAD", href: "/projects" }}
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
           <ProjectImage
             src={mutationTestingPartImg}
             alt="Certora Mutation Testing Flowchart"

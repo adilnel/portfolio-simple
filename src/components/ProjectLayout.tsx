@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState, useCallback } from "react";
 
 interface NavItem {
   label: string;
@@ -31,6 +31,50 @@ export default function ProjectLayout({
   hideRightPanel = false,
 }: ProjectLayoutProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftGradient, setShowLeftGradient] = useState(false);
+  const [showRightGradient, setShowRightGradient] = useState(false);
+
+  const checkScroll = useCallback(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      setShowLeftGradient(scrollLeft > 5);
+      setShowRightGradient(scrollLeft + clientWidth < scrollWidth - 5);
+    }
+  }, []);
+
+  // Handle horizontal scroll with mouse wheel
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        container.scrollLeft += e.deltaY;
+      }
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    return () => container.removeEventListener("wheel", handleWheel);
+  }, []);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      checkScroll();
+      container.addEventListener("scroll", checkScroll);
+      window.addEventListener("resize", checkScroll);
+      
+      const timer = setTimeout(checkScroll, 100);
+      
+      return () => {
+        container.removeEventListener("scroll", checkScroll);
+        window.removeEventListener("resize", checkScroll);
+        clearTimeout(timer);
+      };
+    }
+  }, [navItems, checkScroll]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -51,10 +95,11 @@ export default function ProjectLayout({
             inline: "center",
             block: "nearest"
           });
+          setTimeout(checkScroll, 50);
         }
       }
     }
-  }, [navItems]);
+  }, [navItems, checkScroll]);
 
   const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const container = scrollContainerRef.current;
@@ -103,7 +148,7 @@ export default function ProjectLayout({
               <div className="relative group md:-mr-24 -mx-8 px-8 md:mx-0 md:px-0">
                 <div 
                   ref={scrollContainerRef}
-                  className="flex overflow-x-auto no-scrollbar gap-x-8 md:gap-x-10 py-2"
+                  className="flex overflow-x-auto custom-horizontal-scrollbar gap-x-8 md:gap-x-10 py-2"
                 >
                   {navItems.map((item) => (
                     <Link
@@ -119,11 +164,12 @@ export default function ProjectLayout({
                     >
                       {item.label}
                     </Link>
-                  ))}
-                  <div className="w-12 shrink-0 md:hidden" />
-                </div>
-                <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white via-white/80 to-transparent md:hidden" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/80 to-transparent md:hidden" />
+                    ))}
+                    <div className="w-24 shrink-0" />
+                    </div>
+                    {/* Gradient Masks to indicate more content */}
+                <div className={`pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white via-white/40 to-transparent transition-opacity duration-300 ${showLeftGradient ? "opacity-100" : "opacity-0"}`} />
+                <div className={`pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/40 to-transparent transition-opacity duration-300 ${showRightGradient ? "opacity-100" : "opacity-0"}`} />
               </div>
             ) : subtitle ? (
               <div 
@@ -134,19 +180,19 @@ export default function ProjectLayout({
           </div>
         </div>
 
-        {/* Mobile Image - Shown after header but before content */}
-        {!hideRightPanel && (
-          <div className="md:hidden -mx-8 my-8 bg-zinc-50 border-y border-zinc-100 py-6 px-8 flex justify-center">
-            {rightContent}
-          </div>
-        )}
-
-        {/* Content Area - flex-1 pushes footer down and justify-center centers vertically */}
+        {/* Content Area - on mobile, we want children above the image for certain pages */}
         <div className={`flex-1 flex flex-col ${hideRightPanel ? "items-center justify-center text-center py-12 md:py-24" : "justify-start pt-6 md:py-16"} overflow-y-auto no-scrollbar`}>
           <div className={`w-full ${hideRightPanel ? "max-w-4xl" : ""}`}>
             {children}
           </div>
         </div>
+
+        {/* Mobile Image - Shown after content on mobile if requested */}
+        {!hideRightPanel && (
+          <div className="md:hidden -mx-8 my-8 bg-zinc-50 border-y border-zinc-100 py-6 px-8 flex justify-center">
+            {rightContent}
+          </div>
+        )}
 
         {/* Navigation Arrows - Sticky Bottom on mobile, relative in flex flow on desktop */}
         <div className={`fixed md:relative bottom-0 left-0 w-full md:w-auto p-8 md:p-0 md:pt-12 bg-white/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-t md:border-t-0 border-zinc-100 z-50`}>

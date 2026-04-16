@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Hide scrollbars for all elements */
+/* Hide scrollbars for all elements by default */
 * {
   scrollbar-width: none !important; /* Firefox */
   -ms-overflow-style: none !important; /* IE and Edge */
@@ -10,13 +10,23 @@
   display: none !important; /* Chrome, Safari, and Opera */
 }
 
-/* Explicit utility class just in case */
+/* Explicit utility class for no scrollbar */
 .no-scrollbar {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
 
 .no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Custom horizontal scrollbar utility - functionality remains but visual scrollbar is hidden */
+.custom-horizontal-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.custom-horizontal-scrollbar::-webkit-scrollbar {
   display: none !important;
 }
 

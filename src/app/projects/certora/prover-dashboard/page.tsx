@@ -20,7 +20,7 @@ export default function CertoraProverDashboardGoal() {
       nextLink="/projects/certora/prover-dashboard/problem"
       rightContent={
         <div className="flex items-center justify-center w-full h-full">
-          <div className="relative w-full max-w-[600px] aspect-[944/530]">
+          <div className="relative w-full max-w-[600px] aspect-[944/530] rounded-2xl overflow-hidden">
             <ProjectImage
               src={proverDashboardGoalImg}
               alt="Certora Prover Dashboard Goal"

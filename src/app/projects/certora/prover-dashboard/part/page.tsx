@@ -19,7 +19,7 @@ export default function CertoraProverDashboardPart() {
       backLink="/projects/certora/prover-dashboard/result"
       nextLink={{ label: "Mutation testing", href: "/projects/certora/mutation-testing" }}
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
           <ProjectImage
             src={proverDashboardPartImg}
             alt="Certora Prover Dashboard Part"

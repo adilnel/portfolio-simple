@@ -19,7 +19,7 @@ export default function CertoraProblem() {
       backLink="/projects/certora"
       nextLink="/projects/certora/result"
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
           <ProjectImage
             src={certoraProblemImg}
             alt="Certora CLI Interface"

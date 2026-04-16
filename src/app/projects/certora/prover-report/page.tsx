@@ -20,7 +20,7 @@ export default function CertoraProverReportGoal() {
       nextLink="/projects/certora/prover-report/problem"
       rightContent={
         <div className="flex items-center justify-center w-full h-full">
-          <div className="relative w-full max-w-[600px] aspect-[944/530]">
+          <div className="relative w-full max-w-[600px] aspect-[944/530] rounded-2xl overflow-hidden">
             <ProjectImage
               src={proverReportGoalImg}
               alt="Certora Prover Report"

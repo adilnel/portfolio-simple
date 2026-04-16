@@ -19,7 +19,7 @@ export default function CertoraProverReportPart() {
       backLink="/projects/certora/prover-report/result"
       nextLink={{ label: "Prover dashboard", href: "/projects/certora/prover-dashboard" }}
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
           <ProjectImage
             src={proverReportPartImg}
             alt="Certora Prover Report Flowchart"
