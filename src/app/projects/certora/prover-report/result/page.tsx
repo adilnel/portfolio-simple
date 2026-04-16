@@ -20,11 +20,21 @@ export default function CertoraProverReportResult() {
       backLink="/projects/certora/prover-report/problem"
       nextLink="/projects/certora/prover-report/part"
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
-          <ProjectImage
-            src={proverReportResultImg}
-            alt="Certora Prover Report Result"
-          />
+        <div className="flex flex-col items-center gap-6 w-full">
+          <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
+            <ProjectImage
+              src={proverReportResultImg}
+              alt="Certora Prover Report Result"
+            />
+          </div>
+          <a 
+            href="https://prover.certora.com/output/3060/8f9bc651b2ef43829e8c729be4bcb345/?anonymousKey=e8915beca1e9c97a19825bc3bea01a1e1f18355b" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-lg font-bold underline hover:opacity-70 transition-opacity"
+          >
+            Prover report
+          </a>
         </div>
       }
     >
