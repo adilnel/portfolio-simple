@@ -35,7 +35,7 @@ export default function CertoraGoal() {
         GOAL
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        To develop a user-friendly VSCode plugin, started by Evil Martinas studio, 
+        To develop a user-friendly VSCode plugin, started by <a href="https://evilmartians.com" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">Evil Martians studio</a>, 
         that activates Certora Prover run and tracks its progress. I was aimed 
         to create an intuitive interface to empower non-technical users to effectively 
         utilize the Prover.
