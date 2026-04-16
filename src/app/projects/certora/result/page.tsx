@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import certoraResultImg from "@/assets/certora-result.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraResult() {
   const navItems = [
@@ -18,11 +20,9 @@ export default function CertoraResult() {
       nextLink="/projects/certora/part"
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
-          <Image
+          <ProjectImage
             src={certoraResultImg}
             alt="Certora VSCode Plugin Interface"
-            fill
-            className="object-contain"
           />
         </div>
       }

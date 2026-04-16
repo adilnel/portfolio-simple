@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import ProjectLayout from "@/components/ProjectLayout";
 
@@ -71,9 +73,9 @@ export default function BrandsAndTools() {
           {/* Clients Section */}
           <section>
             <h3 className="text-2xl font-bold mb-8">Some other clients</h3>
-            <div className="grid grid-cols-4 gap-8 opacity-50">
+            <div className="grid grid-cols-4 gap-x-8 gap-y-12 opacity-50">
               {clients.map((client, i) => (
-                <div key={i} className="relative h-12 w-full">
+                <div key={i} className="relative h-12 w-24">
                   <Image
                     src={client.src}
                     alt={client.alt}
@@ -88,15 +90,15 @@ export default function BrandsAndTools() {
           {/* Tools Section */}
           <section>
             <h3 className="text-2xl font-bold mb-8">Tool I Use</h3>
-            <div className="space-y-8">
+            <div className="space-y-12">
               {tools.map((group, i) => (
                 <div key={i} className="flex items-center gap-8">
-                  <p className="text-lg font-bold opacity-50 w-48 leading-tight">
+                  <p className="text-lg font-bold opacity-50 w-48 leading-tight shrink-0">
                     {group.category}
                   </p>
-                  <div className="flex gap-6">
+                  <div className="flex flex-wrap gap-8">
                     {group.items.map((tool, j) => (
-                      <div key={j} className="relative h-10 w-10">
+                      <div key={j} className="relative h-10 w-10 shrink-0">
                         <Image
                           src={tool.src}
                           alt={tool.alt}

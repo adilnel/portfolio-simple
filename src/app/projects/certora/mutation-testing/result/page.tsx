@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import mutationTestingResultImg from "@/assets/certora-mutation-testing-result.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraMutationTestingResult() {
   const navItems = [
@@ -18,11 +20,9 @@ export default function CertoraMutationTestingResult() {
       nextLink="/projects/certora/mutation-testing/part"
       rightContent={
         <div className="relative w-full max-w-[800px] aspect-[944/530]">
-          <Image
+          <ProjectImage
             src={mutationTestingResultImg}
             alt="Certora Mutation Testing Result"
-            fill
-            className="object-contain"
           />
         </div>
       }

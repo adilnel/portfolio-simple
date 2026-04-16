@@ -1,6 +1,8 @@
-import Image from "next/image";
-import mutationTestingGoalImg from "@/assets/certora-mutation-testing-goal.png";
+"use client";
+
+import gambitLogo from "@/assets/certora-gambit-logo.svg";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraMutationTestingGoal() {
   const navItems = [
@@ -17,13 +19,14 @@ export default function CertoraMutationTestingGoal() {
       backLink="/projects/certora/prover-dashboard/part"
       nextLink="/projects/certora/mutation-testing/problem"
       rightContent={
-        <div className="relative w-full max-w-[600px] aspect-[944/530]">
-          <Image
-            src={mutationTestingGoalImg}
-            alt="Certora Mutation Testing Goal"
-            fill
-            className="object-contain"
-          />
+        <div className="flex items-center justify-center w-full h-full">
+          <div className="relative w-full max-w-[480px] aspect-[944/530]">
+            <ProjectImage
+              src={gambitLogo}
+              alt="Certora Mutation Testing - Gambit"
+              priority
+            />
+          </div>
         </div>
       }
     >

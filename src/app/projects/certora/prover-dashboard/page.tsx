@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import proverDashboardGoalImg from "@/assets/certora-prover-dashboard-goal.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function CertoraProverDashboardGoal() {
   const navItems = [
@@ -17,13 +19,14 @@ export default function CertoraProverDashboardGoal() {
       backLink="/projects/certora/prover-report/part"
       nextLink="/projects/certora/prover-dashboard/problem"
       rightContent={
-        <div className="relative w-full max-w-[600px] aspect-[944/530]">
-          <Image
-            src={proverDashboardGoalImg}
-            alt="Certora Prover Dashboard Goal"
-            fill
-            className="object-contain"
-          />
+        <div className="flex items-center justify-center w-full h-full">
+          <div className="relative w-full max-w-[600px] aspect-[944/530]">
+            <ProjectImage
+              src={proverDashboardGoalImg}
+              alt="Certora Prover Dashboard Goal"
+              priority
+            />
+          </div>
         </div>
       }
     >

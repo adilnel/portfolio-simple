@@ -1,6 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import goalImg from "@/assets/goal.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
 
 export default function AutoCADGoal() {
   return (
@@ -11,11 +13,10 @@ export default function AutoCADGoal() {
       nextLink="/projects/problem"
       rightContent={
         <div className="relative w-full max-w-[280px] md:max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
-          <Image
+          <ProjectImage
             src={goalImg}
             alt="AutoCAD Mobile Interface"
-            fill
-            className="object-cover"
+            priority
           />
         </div>
       }

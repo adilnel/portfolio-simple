@@ -1,9 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import delekSuccessImg from "@/assets/delek-success.png";
 import delekAwardImg from "@/assets/delek-award.png";
 import ProjectLayout from "@/components/ProjectLayout";
+import ProjectImage from "@/components/ProjectImage";
+import { useLightbox } from "@/components/LightboxContext";
 
 export default function DelekSuccess() {
+  const { openLightbox } = useLightbox();
+
   return (
     <ProjectLayout
       title="DELEK APP"
@@ -12,14 +18,18 @@ export default function DelekSuccess() {
       nextLink={{ label: "BRANDS", href: "/brands" }}
       rightContent={
         <div className="relative w-full max-w-[280px] md:max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
-          <Image
+          <ProjectImage
             src={delekSuccessImg}
             alt="Delek App Success Interface"
-            fill
-            className="object-cover"
           />
           {/* Award Badge Overlay */}
-          <div className="absolute top-[37%] left-1/2 -translate-x-1/2 -rotate-6 w-[140px] h-[140px] md:w-[200px] md:h-[200px]">
+          <div 
+            className="absolute top-[37%] left-1/2 -translate-x-1/2 -rotate-6 w-[140px] h-[140px] md:w-[200px] md:h-[200px] cursor-pointer hover:scale-105 transition-transform z-10"
+            onClick={(e) => {
+              e.stopPropagation();
+              openLightbox([delekAwardImg]);
+            }}
+          >
             <Image
               src={delekAwardImg}
               alt="Israeli Digital Transformation Award 2020"
