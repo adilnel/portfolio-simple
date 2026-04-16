@@ -36,11 +36,12 @@ export default function CertoraPart() {
       backLink="/projects/certora/result"
       nextLink={{ label: "Prover report", href: "/projects/certora/prover-report" }}
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
+        <div className="relative w-fit max-w-[800px] rounded-2xl overflow-hidden">
           <ImageCarousel 
             images={runConfigImages} 
             alt="Certora VSCode Plugin Run Configuration" 
             interval={1500}
+            fill={false}
           />
         </div>
       }

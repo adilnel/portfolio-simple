@@ -23,6 +23,9 @@ import axureLogo from "@/assets/tool-axure.svg";
 import aeLogo from "@/assets/tool-ae.svg";
 import psdLogo from "@/assets/tool-psd.svg";
 import cinema4dLogo from "@/assets/tool-cinema4d.svg";
+import vscodeLogo from "@/assets/tool-vscode.svg";
+import nextjsLogo from "@/assets/tool-next.svg";
+import typescriptLogo from "@/assets/tool-ts.svg";
 
 export default function BrandsAndTools() {
   const clients = [
@@ -59,6 +62,14 @@ export default function BrandsAndTools() {
         { src: invisionLogo, alt: "InVision" },
         { src: zeplinLogo, alt: "Zeplin" },
         { src: axureLogo, alt: "Axure" },
+      ],
+    },
+    {
+      category: "Coding",
+      items: [
+        { src: vscodeLogo, alt: "VSCode" },
+        { src: typescriptLogo, alt: "TypeScript" },
+        { src: nextjsLogo, alt: "Next.js" },
       ],
     },
   ];
@@ -103,6 +114,8 @@ export default function BrandsAndTools() {
                         className={`relative shrink-0 ${
                           tool.alt === "Cinema 4D" || tool.alt === "Axure" 
                             ? "h-20 w-20" 
+                            : tool.alt === "Next.js"
+                            ? "h-16 w-16"
                             : "h-10 w-10"
                         }`}
                       >

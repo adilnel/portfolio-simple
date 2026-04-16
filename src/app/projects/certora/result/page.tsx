@@ -19,10 +19,11 @@ export default function CertoraResult() {
       backLink="/projects/certora/problem"
       nextLink="/projects/certora/part"
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
+        <div className="relative w-fit max-w-[800px] rounded-2xl overflow-hidden">
           <ProjectImage
             src={certoraResultImg}
             alt="Certora VSCode Plugin Interface"
+            fill={false}
           />
         </div>
       }

@@ -8,9 +8,15 @@ interface ImageCarouselProps {
   images: StaticImageData[];
   interval?: number;
   alt: string;
+  fill?: boolean;
 }
 
-export default function ImageCarousel({ images, interval = 2000, alt }: ImageCarouselProps) {
+export default function ImageCarousel({ 
+  images, 
+  interval = 2000, 
+  alt,
+  fill = true 
+}: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { openLightbox } = useLightbox();
 
@@ -24,22 +30,23 @@ export default function ImageCarousel({ images, interval = 2000, alt }: ImageCar
 
   return (
     <div 
-      className="relative w-full h-full cursor-pointer group"
+      className={`relative cursor-pointer group ${fill ? "w-full h-full" : ""}`}
       onClick={() => openLightbox(images, currentIndex)}
     >
       {images.map((img, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-0 ${
+          className={`transition-opacity duration-0 ${
             index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
+          } ${fill ? "absolute inset-0" : index === 0 ? "relative" : "absolute inset-0"}`}
         >
           <Image
             src={img}
             alt={`${alt} - Frame ${index}`}
-            fill
+            fill={fill}
             className="object-contain"
             priority={true}
+            {...(!fill ? { width: img.width, height: img.height } : {})}
           />
         </div>
       ))}
