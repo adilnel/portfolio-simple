@@ -15,9 +15,7 @@ import hyprLogo from "@/assets/brand-hypr.png";
 
 // Tool Logos
 import figmaLogo from "@/assets/tool-figma.svg";
-import sketchLogo from "@/assets/tool-sketch.svg";
 import zeplinLogo from "@/assets/tool-zeplin.svg";
-import invisionLogo from "@/assets/tool-invision.svg";
 import principleLogo from "@/assets/tool-principle.svg";
 import axureLogo from "@/assets/tool-axure.svg";
 import aeLogo from "@/assets/tool-ae.svg";
@@ -43,7 +41,6 @@ export default function BrandsAndTools() {
       category: "UX/UI",
       items: [
         { src: figmaLogo, alt: "Figma" },
-        { src: sketchLogo, alt: "Sketch" },
         { src: geminiCli, alt: "Gemini CLI" },
       ],
     },
@@ -59,7 +56,6 @@ export default function BrandsAndTools() {
       category: "Prototyping & Handoff",
       items: [
         { src: principleLogo, alt: "Principle" },
-        { src: invisionLogo, alt: "InVision" },
         { src: zeplinLogo, alt: "Zeplin" },
         { src: axureLogo, alt: "Axure" },
       ],
