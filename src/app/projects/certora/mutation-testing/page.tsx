@@ -1,6 +1,6 @@
 "use client";
 
-import gambitLogo from "@/assets/certora-gambit-logo.png";
+import gambitLogo from "@/assets/certora-gambit-logo.svg";
 import ProjectLayout from "@/components/ProjectLayout";
 import ProjectImage from "@/components/ProjectImage";
 
