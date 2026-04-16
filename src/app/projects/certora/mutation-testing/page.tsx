@@ -35,7 +35,7 @@ export default function CertoraMutationTestingGoal() {
         GOAL
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        Integrate Gambit mutation testing into the Certora ecosystem by creating a <a href="https://www.certora.com/gambit" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">visual interface</a> that allows developers to measure the effectiveness of their verification specs. The goal was to provide a clear way to see if mutants are &quot;caught&quot; or &quot;survived,&quot; helping users strengthen their formal verification suites.
+        Integrate Gambit mutation testing into the Certora ecosystem by creating a <a href="https://www.certora.com/gambit" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">visual interface</a> &nbsp;that allows developers to measure the effectiveness of their verification specs. The goal was to provide a clear way to see if mutants are &quot;caught&quot; or &quot;survived,&quot; helping users strengthen their formal verification suites.
       </p>
     </ProjectLayout>
   );
