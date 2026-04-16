@@ -26,10 +26,10 @@ export default function Home() {
         </div>
       }
     >
-      <div className="flex flex-col gap-6 pt-24 md:pt-0">
+      <div className="flex flex-col gap-6 pt-24 md:pt-0 overflow-break">
         <h1 className="text-5xl sm:text-[80px] font-bold leading-none tracking-tight uppercase">
           <span className="font-normal block">Quick</span>
-          <span>Portfolio</span>
+          <span className="break-all">Portfolio</span>
         </h1>
         <p className="text-xl sm:text-[34px] font-semibold text-zinc-400">
           By Avi Adlin

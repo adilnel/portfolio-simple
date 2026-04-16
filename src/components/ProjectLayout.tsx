@@ -213,7 +213,7 @@ export default function ProjectLayout({
         )}
 
         {/* Navigation Arrows - Sticky Bottom on mobile, relative in flex flow on desktop */}
-        <div className={`fixed md:relative bottom-0 left-0 w-full md:w-auto p-8 md:p-0 md:pt-12 ${darkMode ? "bg-black/90 md:bg-transparent" : "bg-white/90 md:bg-transparent"} backdrop-blur-md md:backdrop-blur-none border-t md:border-t-0 ${borderColor} z-50`}>
+        <div className={`fixed md:relative bottom-0 left-0 w-full md:w-auto px-4 py-2 md:p-0 md:pt-8 ${darkMode ? "bg-black/90 md:bg-transparent" : "bg-white/90 md:bg-transparent"} backdrop-blur-md md:backdrop-blur-none border-t md:border-t-0 ${borderColor} z-50`}>
           <div className="flex items-center justify-between md:justify-start gap-12 w-full max-w-md md:max-w-none mx-auto md:mx-0">
             {backLink && (
               <Link

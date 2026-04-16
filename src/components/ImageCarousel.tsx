@@ -29,8 +29,8 @@ export default function ImageCarousel({
   }, [images.length, interval]);
 
   return (
-    <div 
-      className={`relative cursor-pointer group ${fill ? "w-full h-full" : ""}`}
+    <button 
+      className={`relative cursor-pointer group border-none p-0 m-0 bg-transparent text-left outline-none ${fill ? "w-full h-full" : "block w-fit"}`}
       onClick={() => openLightbox(images, currentIndex)}
     >
       {images.map((img, index) => (
@@ -51,11 +51,11 @@ export default function ImageCarousel({
         </div>
       ))}
       {/* Lightbox Trigger Hint */}
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center z-20">
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center z-20 pointer-events-none">
         <div className="bg-white/90 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 text-sm font-medium shadow-sm">
           Click to expand
         </div>
       </div>
-    </div>
+    </button>
   );
 }
