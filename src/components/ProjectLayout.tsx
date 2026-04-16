@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useRef } from "react";
 
 interface NavItem {
@@ -42,7 +41,6 @@ export default function ProjectLayout({
         const containerRect = container.getBoundingClientRect();
         const itemRect = activeElement.getBoundingClientRect();
 
-        // Check if the item is already mostly visible within the container
         const isVisible = (
           itemRect.left >= containerRect.left &&
           itemRect.right <= containerRect.right
@@ -67,7 +65,6 @@ export default function ProjectLayout({
       const containerRect = container.getBoundingClientRect();
       const itemRect = item.getBoundingClientRect();
 
-      // Check if the item is already mostly visible within the container
       const isVisible = (
         itemRect.left >= containerRect.left &&
         itemRect.right <= containerRect.right
@@ -84,10 +81,10 @@ export default function ProjectLayout({
   };
 
   return (
-    <main className="min-h-screen bg-white text-black flex flex-col md:flex-row overflow-x-hidden pb-32 md:pb-0">
+    <main className="min-h-screen bg-white text-black flex flex-col md:flex-row overflow-x-hidden">
       {/* Left Content - Fixed on Desktop */}
-      <div className={`w-full ${hideRightPanel ? "md:w-full" : "md:w-1/2"} md:fixed md:left-0 md:top-0 md:h-screen flex flex-col justify-between p-8 md:pt-[132px] md:pb-24 md:px-24 lg:pl-[176px] bg-white z-10 ${!hideRightPanel && "border-r border-zinc-100"}`}>
-        <div className="space-y-4 text-left">
+      <div className={`w-full ${hideRightPanel ? "md:w-full" : "md:w-1/2"} md:fixed md:left-0 md:top-0 md:h-screen flex flex-col justify-between p-8 md:pt-[132px] md:pb-24 md:px-24 lg:pl-[176px] bg-white z-10 ${!hideRightPanel ? "border-r border-zinc-100" : ""}`}>
+        <div className="space-y-4">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-zinc-400 hover:text-black transition-colors mb-8 group"
@@ -103,13 +100,11 @@ export default function ProjectLayout({
               {title}
             </h2>
             
-            {/* Sub-project Navigation or Subtitle */}
             {navItems ? (
               <div className="relative group md:-mr-24 -mx-8 px-8 md:mx-0 md:px-0">
-                {/* Horizontal Scroll Container */}
                 <div 
                   ref={scrollContainerRef}
-                  className="flex overflow-x-auto custom-scrollbar gap-x-8 md:gap-x-10 py-2"
+                  className="flex overflow-x-auto no-scrollbar gap-x-8 md:gap-x-10 py-2"
                 >
                   {navItems.map((item) => (
                     <Link
@@ -126,11 +121,8 @@ export default function ProjectLayout({
                       {item.label}
                     </Link>
                   ))}
-                  {/* End Spacer for right padding on scroll */}
                   <div className="w-12 shrink-0 md:hidden" />
                 </div>
-                
-                {/* Mobile Gradient Masks - Only visible on small screens */}
                 <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white via-white/80 to-transparent md:hidden" />
                 <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/80 to-transparent md:hidden" />
               </div>
@@ -150,13 +142,15 @@ export default function ProjectLayout({
           </div>
         )}
 
-        {/* Content Aligned to Top (or centered if hideRightPanel is true) */}
-        <div className={`flex-1 flex flex-col ${hideRightPanel ? "justify-center" : "justify-start"} py-12 md:py-16 overflow-y-auto custom-scrollbar`}>
-          {children}
+        {/* Content Area */}
+        <div className={`flex-1 flex flex-col ${hideRightPanel ? "items-center justify-center text-center" : "justify-start"} py-12 md:py-16 overflow-y-auto no-scrollbar`}>
+          <div className={`w-full ${hideRightPanel ? "max-w-4xl" : ""}`}>
+            {children}
+          </div>
         </div>
 
-        {/* Navigation Arrows - Sticky Bottom */}
-        <div className={`fixed bottom-0 left-0 w-full ${hideRightPanel ? "md:w-full" : "md:w-1/2"} p-8 md:pt-12 md:pb-20 md:px-24 lg:pl-[176px] bg-white/90 backdrop-blur-md border-t md:border-t-0 border-zinc-100 z-50`}>
+        {/* Navigation Arrows - Fixed at bottom of left panel's space */}
+        <div className={`absolute bottom-0 left-0 w-full p-8 md:pt-12 md:pb-20 md:px-24 lg:pl-[176px] bg-white/90 backdrop-blur-md border-t md:border-t-0 border-zinc-100 z-50`}>
           <div className="flex items-center justify-between md:justify-start gap-12 w-full max-w-md md:max-w-none mx-auto md:mx-0">
             {backLink && (
               <Link
@@ -186,15 +180,15 @@ export default function ProjectLayout({
         </div>
       </div>
 
-      {/* Spacer for Desktop since the left panel is fixed */}
-      {!hideRightPanel && <div className="hidden md:block w-1/2" />}
-
-      {/* Right Content - Vertically Centered on Desktop, Top Aligned on Mobile */}
-      {!hideRightPanel && (
-        <div className="hidden md:flex w-full md:w-1/2 min-h-screen bg-zinc-50 flex-col items-center justify-start md:justify-center pt-8 pb-24 md:py-24 px-8 space-y-24">
-          {rightContent}
-        </div>
-      )}
+      {/* Right Column / Spacer for desktop */}
+      {!hideRightPanel ? (
+        <>
+          <div className="hidden md:block w-1/2" />
+          <div className="hidden md:flex w-full md:w-1/2 min-h-screen bg-zinc-50 flex-col items-center justify-center p-8 md:py-24 space-y-24">
+            {rightContent}
+          </div>
+        </>
+      ) : null}
     </main>
   );
 }
