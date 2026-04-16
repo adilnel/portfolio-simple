@@ -19,15 +19,16 @@ export default function CertoraResult() {
       backLink="/projects/certora/problem"
       nextLink="/projects/certora/part"
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530]">
+        <div className="relative w-fit max-w-[800px] rounded-2xl overflow-hidden">
           <ProjectImage
             src={certoraResultImg}
             alt="Certora VSCode Plugin Interface"
+            fill={false}
           />
         </div>
       }
     >
-      <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
+      <h1 className="text-5xl md:text-7xl font-bold uppercase leading-none mb-6">
         <span className="font-normal block">The</span>
         RESULT
       </h1>

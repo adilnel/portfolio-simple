@@ -20,7 +20,7 @@ export default function CertoraProverDashboardGoal() {
       nextLink="/projects/certora/prover-dashboard/problem"
       rightContent={
         <div className="flex items-center justify-center w-full h-full">
-          <div className="relative w-full max-w-[600px] aspect-[944/530]">
+          <div className="relative w-full max-w-[600px] aspect-[944/530] rounded-2xl overflow-hidden">
             <ProjectImage
               src={proverDashboardGoalImg}
               alt="Certora Prover Dashboard Goal"
@@ -30,7 +30,7 @@ export default function CertoraProverDashboardGoal() {
         </div>
       }
     >
-      <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
+      <h1 className="text-5xl md:text-7xl font-bold uppercase leading-none mb-6">
         <span className="font-normal block">THE</span>
         GOAL
       </h1>

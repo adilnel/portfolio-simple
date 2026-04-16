@@ -10,8 +10,8 @@ export default function ThankYou() {
       rightContent={null}
       hideRightPanel={true}
     >
-      <div className="flex flex-col items-center justify-center h-full text-center mx-auto max-w-2xl">
-        <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-tight mb-6">
+      <div className="flex flex-col items-center text-center mx-auto max-w-2xl">
+        <h1 className="text-5xl md:text-7xl font-bold uppercase leading-tight mb-6">
           <span className="font-normal block">Thank</span>
           you ❤️
         </h1>

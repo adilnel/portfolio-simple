@@ -8,22 +8,30 @@ interface ProjectImageProps {
   alt: string;
   className?: string;
   priority?: boolean;
+  fill?: boolean;
 }
 
-export default function ProjectImage({ src, alt, className = "", priority = false }: ProjectImageProps) {
+export default function ProjectImage({ 
+  src, 
+  alt, 
+  className = "", 
+  priority = false,
+  fill = true 
+}: ProjectImageProps) {
   const { openLightbox } = useLightbox();
 
   return (
     <div 
-      className={`relative cursor-pointer group w-full h-full ${className}`}
+      className={`relative cursor-pointer group ${fill ? "w-full h-full" : ""} ${className}`}
       onClick={() => openLightbox([src])}
     >
       <Image
         src={src}
         alt={alt}
-        fill
+        fill={fill}
         className="object-contain"
         priority={priority}
+        {...(!fill ? { width: src.width, height: src.height } : {})}
       />
       {/* Lightbox Trigger Hint */}
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">

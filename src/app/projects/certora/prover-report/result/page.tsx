@@ -19,7 +19,7 @@ export default function CertoraProverReportResult() {
       backLink="/projects/certora/prover-report/problem"
       nextLink="/projects/certora/prover-report/part"
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530]">
+        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
           <ProjectImage
             src={proverReportResultImg}
             alt="Certora Prover Report Result"
@@ -27,7 +27,7 @@ export default function CertoraProverReportResult() {
         </div>
       }
     >
-      <h1 className="text-7xl md:text-[88px] font-bold uppercase leading-none mb-6">
+      <h1 className="text-5xl md:text-7xl font-bold uppercase leading-none mb-6">
         <span className="font-normal block">The</span>
         RESULT
       </h1>
