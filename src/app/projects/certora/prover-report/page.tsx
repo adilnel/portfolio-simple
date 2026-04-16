@@ -35,7 +35,7 @@ export default function CertoraProverReportGoal() {
         GOAL
       </h1>
       <p className="text-xl opacity-80 max-w-lg leading-relaxed">
-        Transform the Certora Prover report into a user-friendly interface that allows all users to effortlessly monitor progress and results without the clutter of legacy table
+        Transform the Certora <a href="https://prover.certora.com/output/3060/8f9bc651b2ef43829e8c729be4bcb345/?anonymousKey=e8915beca1e9c97a19825bc3bea01a1e1f18355b" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">Prover report</a> into a user-friendly interface that allows all users to effortlessly monitor progress and results without the clutter of legacy table
       </p>
     </ProjectLayout>
   );
