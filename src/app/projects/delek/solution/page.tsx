@@ -10,7 +10,7 @@ export default function DelekSolution() {
       backLink="/projects/delek/problem"
       nextLink="/projects/delek/success"
       rightContent={
-        <div className="relative w-full max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
+        <div className="relative w-full max-w-[280px] md:max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
           <Image
             src={delekSolutionImg}
             alt="Delek App Solution Interface"

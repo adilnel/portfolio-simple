@@ -31,6 +31,32 @@ export default function ProjectLayout({
 }: ProjectLayoutProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // Scroll active item into view on mount or when navItems change
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const activeElement = container.querySelector('[data-active="true"]') as HTMLElement;
+      if (activeElement) {
+        const containerRect = container.getBoundingClientRect();
+        const itemRect = activeElement.getBoundingClientRect();
+
+        // Check if the item is already mostly visible within the container
+        const isVisible = (
+          itemRect.left >= containerRect.left &&
+          itemRect.right <= containerRect.right
+        );
+
+        if (!isVisible) {
+          activeElement.scrollIntoView({
+            behavior: "auto",
+            inline: "center",
+            block: "nearest"
+          });
+        }
+      }
+    }
+  }, [navItems]);
+
   const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const container = scrollContainerRef.current;
     const item = e.currentTarget;
@@ -115,6 +141,11 @@ export default function ProjectLayout({
           </div>
         </div>
 
+        {/* Mobile Image - Shown after header but before content */}
+        <div className="md:hidden -mx-8 my-8 bg-zinc-50 border-y border-zinc-100 py-12 px-8 flex justify-center">
+          {rightContent}
+        </div>
+
         {/* Content Aligned to Top */}
         <div className="flex-1 flex flex-col justify-start py-12 md:py-16 overflow-y-auto custom-scrollbar">
           {children}
@@ -155,7 +186,7 @@ export default function ProjectLayout({
       <div className="hidden md:block w-1/2" />
 
       {/* Right Content - Vertically Centered on Desktop, Top Aligned on Mobile */}
-      <div className="w-full md:w-1/2 min-h-screen bg-zinc-50 flex flex-col items-center justify-start md:justify-center pt-8 pb-24 md:py-24 px-8 space-y-24">
+      <div className="hidden md:flex w-full md:w-1/2 min-h-screen bg-zinc-50 flex-col items-center justify-start md:justify-center pt-8 pb-24 md:py-24 px-8 space-y-24">
         {rightContent}
       </div>
     </main>
