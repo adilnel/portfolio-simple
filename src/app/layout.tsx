@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Avi Adlin | Portfolio",
   description: "Quick Portfolio by Avi Adlin",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
