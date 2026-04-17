@@ -63,25 +63,35 @@ export default function KeyboardNavigation() {
       // Threshold for deltaY to avoid accidental triggers
       if (Math.abs(event.deltaY) < 30) return;
 
-      // Check if mouse is hovering over a container with inner scroll
+      // Check the hover context
       let target = event.target as HTMLElement | null;
-      let inScrollableContainer = false;
+      let inFixedContainer = false;
+      let inInnerScrollable = false;
 
-      while (target && target !== document.body) {
+      while (target && target !== document.documentElement) {
         const style = window.getComputedStyle(target);
-        const canScrollY = style.overflowY === "auto" || style.overflowY === "scroll";
-        const canScrollX = style.overflowX === "auto" || style.overflowX === "scroll";
-        const isCurrentlyScrollableY = target.scrollHeight > target.clientHeight;
-        const isCurrentlyScrollableX = target.scrollWidth > target.clientWidth;
+        
+        // Check if we are inside a fixed container (like the left panel)
+        if (style.position === "fixed") {
+          inFixedContainer = true;
+        }
 
-        if ((canScrollY && isCurrentlyScrollableY) || (canScrollX && isCurrentlyScrollableX)) {
-          inScrollableContainer = true;
+        // Check for explicit inner scrollbars
+        const overflowY = style.overflowY;
+        if ((overflowY === "auto" || overflowY === "scroll") && target.scrollHeight > target.clientHeight + 5) {
+          inInnerScrollable = true;
           break;
         }
+        
         target = target.parentElement;
       }
 
-      if (inScrollableContainer) return;
+      if (inInnerScrollable) return;
+
+      // If we are NOT in a fixed container, and the page itself is scrollable, 
+      // we treat this as being in a scrollable area (like the right panel).
+      const isPageScrollable = document.documentElement.scrollHeight > window.innerHeight + 5;
+      if (!inFixedContainer && isPageScrollable) return;
 
       const currentIndex = ROUTES.indexOf(pathname);
       if (currentIndex === -1) return;
