@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useNavigation } from "@/context/NavigationContext";
+import Spinner from "./Spinner";
 
 interface HamburgerMenuProps {
   darkMode?: boolean;
@@ -13,6 +15,7 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const { navigate, isNavigating, navDirection } = useNavigation();
 
   // Close menu when route changes
   useEffect(() => {
@@ -70,15 +73,23 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
         useWhiteHeader ? "bg-white/90 backdrop-blur-md border-b border-black/5 shadow-sm" : "bg-transparent"
       }`}>
         {/* Back to Home Button */}
-        <Link
-          href="/"
-          className={`inline-flex items-center gap-2 ${backToHomeColor} transition-colors pointer-events-auto p-3 -ml-3`}
+        <button
+          onClick={() => navigate("/", "back")}
+          disabled={isNavigating}
+          className={`inline-flex items-center gap-2 ${backToHomeColor} transition-colors pointer-events-auto p-3 -ml-3 border-none bg-transparent cursor-pointer`}
+          aria-label="Back to Start"
         >
-          <span className="flex items-center text-sm font-medium uppercase tracking-wider">
-            <span className="mr-2">←</span>
-            Back to Start
+          <span className="flex items-center text-sm font-medium uppercase tracking-wider h-5">
+            {isNavigating && navDirection === "back" ? (
+              <Spinner size="sm" />
+            ) : (
+              <>
+                <span className="mr-2">←</span>
+                Start
+              </>
+            )}
           </span>
-        </Link>
+        </button>
 
         {/* Hamburger Button */}
         <button

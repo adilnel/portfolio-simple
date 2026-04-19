@@ -85,7 +85,7 @@ export default function ScrollProgressBar() {
       container.addEventListener("scroll", calculateProgress, { passive: true });
     }
 
-    calculateProgress();
+    requestAnimationFrame(calculateProgress);
     const timer = setInterval(calculateProgress, 500);
 
     return () => {
