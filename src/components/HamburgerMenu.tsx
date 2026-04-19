@@ -85,7 +85,7 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
             ) : (
               <>
                 <span className="mr-2">←</span>
-                Start
+                Back to Start
               </>
             )}
           </span>
