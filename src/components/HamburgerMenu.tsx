@@ -11,6 +11,7 @@ interface HamburgerMenuProps {
 export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   // Close menu when route changes
@@ -18,6 +19,15 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
     setIsOpen(false);
     setHoveredItem(null);
   }, [pathname]);
+
+  // Handle scroll for sticky header background
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Prevent scrolling when menu is open
   useEffect(() => {
@@ -38,34 +48,71 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
 
   const isItemActive = (href: string) => {
     if (href === "/projects") {
-      // AutoCAD is at /projects, but we shouldn't highlight it if we're in Certora or Delek
       return pathname === "/projects" || (pathname.startsWith("/projects/") && !pathname.startsWith("/projects/certora") && !pathname.startsWith("/projects/delek"));
     }
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
-  const lineColor = isOpen ? "bg-white" : darkMode ? "bg-white" : "bg-black";
+  // On scroll, we force a light background (white) as requested, so text/lines must be black
+  const useWhiteHeader = isScrolled && !isOpen;
+  const lineColor = (isOpen || (darkMode && !useWhiteHeader)) ? "bg-white" : "bg-black";
+  const backToHomeColor = (isOpen || (darkMode && !useWhiteHeader)) ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black";
 
   if (pathname === "/") return null;
 
   return (
     <>
-      {/* Hamburger Button */}
+      {/* Sticky Header Bar for Mobile */}
+      <div className={`md:hidden fixed top-0 left-0 right-0 h-16 flex items-center justify-between z-[150] px-6 transition-all duration-300 pointer-events-none ${
+        useWhiteHeader ? "bg-white/90 backdrop-blur-md border-b border-black/5 shadow-sm" : "bg-transparent"
+      }`}>
+        {/* Back to Home Button */}
+        <Link
+          href="/"
+          className={`inline-flex items-center gap-2 ${backToHomeColor} transition-colors pointer-events-auto p-3 -ml-3`}
+        >
+          <span className="flex items-center text-sm font-medium uppercase tracking-wider">
+            <span className="mr-2">←</span>
+            Home
+          </span>
+        </Link>
+
+        {/* Hamburger Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-3 -mr-3 group pointer-events-auto"
+          aria-label="Toggle Menu"
+        >
+          <div className="flex flex-col gap-1.5 w-6 items-end">
+            <span 
+              className={`h-0.5 ${lineColor} transition-all duration-300 ${isOpen ? "w-6 rotate-45 translate-y-2" : "w-6 group-hover:w-4"}`} 
+            />
+            <span 
+              className={`h-0.5 ${lineColor} transition-all duration-300 ${isOpen ? "opacity-0" : "w-6"}`} 
+            />
+            <span 
+              className={`h-0.5 ${lineColor} transition-all duration-300 ${isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-4 group-hover:w-6"}`} 
+            />
+          </div>
+        </button>
+      </div>
+
+      {/* Desktop Hamburger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 md:top-8 md:right-8 z-[150] p-2 md:p-4 group"
+        className="hidden md:block fixed top-8 right-8 z-[150] p-4 group"
         aria-label="Toggle Menu"
       >
         <div className="flex flex-col gap-1.5 w-6 items-end">
           <span 
-            className={`h-0.5 ${lineColor} transition-all duration-300 ${isOpen ? "w-6 rotate-45 translate-y-2" : "w-6 group-hover:w-4"}`} 
+            className={`h-0.5 ${isOpen ? "bg-white" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "w-6 rotate-45 translate-y-2" : "w-6 group-hover:w-4"}`} 
           />
           <span 
-            className={`h-0.5 ${lineColor} transition-all duration-300 ${isOpen ? "opacity-0" : "w-6"}`} 
+            className={`h-0.5 ${isOpen ? "bg-white" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "opacity-0" : "w-6"}`} 
           />
           <span 
-            className={`h-0.5 ${lineColor} transition-all duration-300 ${isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-4 group-hover:w-6"}`} 
+            className={`h-0.5 ${isOpen ? "bg-white" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-4 group-hover:w-6"}`} 
           />
         </div>
       </button>
@@ -80,7 +127,6 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
           <nav className="flex flex-col gap-8 items-start">
             {menuItems.map((item) => {
               const active = isItemActive(item.href);
-              // Focus state: either explicitly hovered, or active if nothing is being hovered
               const isFocused = hoveredItem === item.label || (hoveredItem === null && active);
               
               return (

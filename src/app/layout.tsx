@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import KeyboardNavigation from "@/components/KeyboardNavigation";
 import { LightboxProvider } from "@/components/LightboxContext";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,6 +39,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <ScrollProgressBar />
         <LightboxProvider>
           <KeyboardNavigation />
           {children}
