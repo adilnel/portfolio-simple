@@ -1,8 +1,12 @@
 "use client";
 
-import proverDashboardResultImg from "@/assets/certora-prover-dashboard-result.png";
 import ProjectLayout from "@/components/ProjectLayout";
-import ProjectImage from "@/components/ProjectImage";
+import ImageCarousel from "@/components/ImageCarousel";
+
+// Import carousel images
+import baseResult from "@/assets/certora-prover-dashboard-result.png";
+import frame1 from "@/assets/prover-dashboard-carousel-1.png";
+import frame2 from "@/assets/prover-dashboard-carousel-2.png";
 
 export default function CertoraProverDashboardResult() {
   const navItems = [
@@ -12,6 +16,11 @@ export default function CertoraProverDashboardResult() {
     { label: "Mutation testing", href: "/projects/certora/mutation-testing" },
   ];
 
+  // The animation starts with the original state (baseResult)
+  // then shows the "Delete Job" screen (frame1)
+  // and finally the "Profile Settings" screen (frame2)
+  const frames = [baseResult, frame1, frame2];
+
   return (
     <ProjectLayout
       title="CERTORA"
@@ -20,10 +29,12 @@ export default function CertoraProverDashboardResult() {
       backLink="/projects/certora/prover-dashboard/problem"
       nextLink="/projects/certora/prover-dashboard/part"
       rightContent={
-        <div className="relative w-full max-w-[800px] aspect-[944/530] rounded-2xl overflow-hidden">
-          <ProjectImage
-            src={proverDashboardResultImg}
-            alt="Certora Prover Dashboard Result"
+        <div className="relative w-fit max-w-[800px] rounded-2xl overflow-hidden">
+          <ImageCarousel 
+            images={frames} 
+            alt="Prover dashboard result screens" 
+            interval={2000}
+            fill={false}
           />
         </div>
       }

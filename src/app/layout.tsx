@@ -43,7 +43,9 @@ export default function RootLayout({
           {children}
         </LightboxProvider>
       </body>
-      <GoogleAnalytics gaId="G-2T090FHWFE" />
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }
