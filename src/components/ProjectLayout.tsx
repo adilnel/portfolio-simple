@@ -56,7 +56,7 @@ export default function ProjectLayout({
   useEffect(() => {
     const container = contentRef.current;
     if (container) {
-      checkScroll();
+      requestAnimationFrame(checkScroll);
       container.addEventListener("scroll", checkScroll);
       window.addEventListener("resize", checkScroll);
       return () => {

@@ -39,7 +39,9 @@ export default function Home() {
 
   useEffect(() => {
     const dismissed = localStorage.getItem("gemini-box-dismissed") === "true";
-    setState({ isVisible: !dismissed, isLoaded: true });
+    requestAnimationFrame(() => {
+      setState({ isVisible: !dismissed, isLoaded: true });
+    });
   }, []);
 
   const handleDismiss = () => {

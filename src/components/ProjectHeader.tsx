@@ -56,7 +56,7 @@ export default function ProjectHeader({
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      checkScroll();
+      requestAnimationFrame(checkScroll);
       container.addEventListener("scroll", checkScroll);
       window.addEventListener("resize", checkScroll);
       
