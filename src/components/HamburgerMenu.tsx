@@ -16,8 +16,10 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
 
   // Close menu when route changes
   useEffect(() => {
-    setIsOpen(false);
-    setHoveredItem(null);
+    requestAnimationFrame(() => {
+      setIsOpen(false);
+      setHoveredItem(null);
+    });
   }, [pathname]);
 
   // Handle scroll for sticky header background
@@ -74,7 +76,7 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
         >
           <span className="flex items-center text-sm font-medium uppercase tracking-wider">
             <span className="mr-2">←</span>
-            Home
+            Back to Home
           </span>
         </Link>
 
