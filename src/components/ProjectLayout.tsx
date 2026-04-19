@@ -90,6 +90,7 @@ export default function ProjectLayout({
         <div className="flex-1 relative overflow-hidden flex flex-col">
           <div 
             ref={contentRef}
+            id="main-content-area"
             className={`flex-1 flex flex-col ${hideRightPanel || isMobileContentCentered ? "items-center justify-center text-center py-12 md:py-24" : "justify-start pt-6 md:py-16"} overflow-y-auto no-scrollbar`}
           >
             <div className={`w-full ${hideRightPanel ? "max-w-6xl" : ""}`}>

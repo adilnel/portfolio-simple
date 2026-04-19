@@ -123,20 +123,20 @@ export default function ProjectHeader({
   const gradientFrom = darkMode ? "from-black" : "from-white";
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pt-12">
       {!isHome && (
         <Link
           href="/"
-          className={`inline-flex items-center gap-2 ${darkMode ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black"} transition-colors mb-4 mt-2 md:mt-0 group`}
+          className={`hidden md:inline-flex items-center gap-2 ${darkMode ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black"} transition-colors mb-4 group`}
         >
           <span className="flex items-center">
             <span className="mr-2">←</span>
-            Back to Home
+            Back to Start
           </span>
         </Link>
       )}
 
-      <div className="space-y-2 md:space-y-6">
+      <div className="space-y-2">
         {title && (
           <h2 className="text-[32px] font-bold tracking-tight uppercase leading-none">
             {title}

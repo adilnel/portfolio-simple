@@ -64,13 +64,14 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
       {children}
       {isOpen && (
         <div 
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-200 cursor-pointer"
+          className="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-200 cursor-pointer"
           onClick={closeLightbox}
         >
           {/* Close Button */}
           <button 
             className="absolute top-8 right-8 text-white/60 hover:text-white transition-colors z-[110] p-4"
             onClick={closeLightbox}
+            aria-label="Close lightbox"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -84,6 +85,7 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
               <button 
                 className="absolute left-4 md:left-8 text-white/40 hover:text-white transition-colors z-[110] p-4"
                 onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                aria-label="Previous image"
               >
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6"></polyline>
@@ -92,6 +94,7 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
               <button 
                 className="absolute right-4 md:right-8 text-white/40 hover:text-white transition-colors z-[110] p-4"
                 onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                aria-label="Next image"
               >
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6"></polyline>
