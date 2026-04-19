@@ -5,6 +5,24 @@ import ProjectLayout from "@/components/ProjectLayout";
 import GeminiLogo from "@/components/GeminiLogo";
 import meImg from "@/assets/me.jpeg";
 
+function GeminiBox({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex items-start gap-4 p-4 rounded-2xl bg-zinc-900 border border-zinc-800 ${className}`}>
+      <div className="p-2 rounded-lg bg-zinc-800 shadow-sm flex-shrink-0">
+        <GeminiLogo className="w-6 h-6" />
+      </div>
+      <div className="space-y-1">
+        <p className="text-sm font-medium text-zinc-300">
+          AI-Powered Presentation
+        </p>
+        <p className="text-sm text-zinc-500 leading-relaxed">
+          I have developed this presentation and refined using <span className="text-zinc-300 font-medium">Gemini CLI</span> with the <span className="text-zinc-300 font-medium">Figma MCP server</span>, demonstrating a seamless design-to-code workflow.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <ProjectLayout
@@ -13,6 +31,11 @@ export default function Home() {
       isHome={true}
       isMobileImageHidden={true}
       nextLink={{ label: "Projects", href: "/projects/certora" }}
+      extraFooterContent={
+        <div className="pb-2">
+          <GeminiBox />
+        </div>
+      }
       rightContent={
         <div className="relative w-full min-h-screen">
           <Image
@@ -35,20 +58,8 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="mt-12 max-w-lg">
-        <div className="flex items-start gap-4 p-4 rounded-2xl bg-zinc-900 border border-zinc-800">
-          <div className="p-2 rounded-lg bg-zinc-800 shadow-sm flex-shrink-0">
-            <GeminiLogo className="w-6 h-6" />
-          </div>
-          <div className="space-y-1">
-            <p className="text-sm font-medium text-zinc-300">
-              AI-Powered Presentation
-            </p>
-            <p className="text-sm text-zinc-500 leading-relaxed">
-              I have developed this presentation and refined using <span className="text-zinc-300 font-medium">Gemini CLI</span> with the <span className="text-zinc-300 font-medium">Figma MCP server</span>, demonstrating a seamless design-to-code workflow.
-            </p>
-          </div>
-        </div>
+      <div className="mt-12 max-w-lg hidden md:block">
+        <GeminiBox />
       </div>
     </ProjectLayout>
   );

@@ -127,7 +127,7 @@ export default function ProjectHeader({
       {!isHome && (
         <Link
           href="/"
-          className={`inline-flex items-center gap-2 ${darkMode ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black"} transition-colors mb-4 group`}
+          className={`inline-flex items-center gap-2 ${darkMode ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black"} transition-colors mb-4 mt-2 md:mt-0 group`}
         >
           <span className="flex items-center">
             <span className="mr-2">←</span>
@@ -136,7 +136,7 @@ export default function ProjectHeader({
         </Link>
       )}
 
-      <div className="space-y-6">
+      <div className="space-y-2 md:space-y-6">
         {title && (
           <h2 className="text-[32px] font-bold tracking-tight uppercase leading-none">
             {title}
