@@ -55,6 +55,7 @@ export default function Home() {
       darkMode={true}
       isHome={true}
       isMobileImageHidden={true}
+      isRightPanelPadded={false}
       nextLink={{ label: "Projects", href: "/projects/certora" }}
       extraFooterContent={
         isLoaded && isVisible ? (

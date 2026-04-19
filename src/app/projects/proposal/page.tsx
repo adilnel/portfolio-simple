@@ -12,10 +12,11 @@ export default function AutoCADProposal() {
       backLink="/projects/problem"
       nextLink={{ label: "DELEK", href: "/projects/delek" }}
       rightContent={
-        <div className="relative w-full max-w-[280px] md:max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
+        <div className="relative w-fit max-w-[280px] md:max-w-[400px] max-h-[85vh] shadow-2xl rounded-[30px] md:rounded-[40px] overflow-hidden">
           <ProjectImage
             src={proposalImg}
             alt="AutoCAD Mobile Proposal Interface"
+            fill={false}
           />
         </div>
       }
