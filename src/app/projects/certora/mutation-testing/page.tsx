@@ -26,6 +26,7 @@ export default function CertoraMutationTestingGoal() {
               src={gambitLogo}
               alt="Certora Mutation Testing - Gambit"
               priority
+              expandable={false}
             />
           </div>
         </div>

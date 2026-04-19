@@ -26,6 +26,7 @@ export default function CertoraGoal() {
               src={certoraGoalImg}
               alt="Certora + VSCode"
               priority
+              expandable={false}
             />
           </div>
         </div>

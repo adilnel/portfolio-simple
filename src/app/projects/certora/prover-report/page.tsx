@@ -26,6 +26,7 @@ export default function CertoraProverReportGoal() {
               src={proverReportGoalImg}
               alt="Certora Prover Report"
               priority
+              expandable={false}
             />
           </div>
         </div>

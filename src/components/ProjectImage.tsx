@@ -9,6 +9,7 @@ interface ProjectImageProps {
   className?: string;
   priority?: boolean;
   fill?: boolean;
+  expandable?: boolean;
 }
 
 export default function ProjectImage({ 
@@ -16,23 +17,36 @@ export default function ProjectImage({
   alt, 
   className = "", 
   priority = false,
-  fill = true 
+  fill = true,
+  expandable = true
 }: ProjectImageProps) {
   const { openLightbox } = useLightbox();
+
+  const content = (
+    <Image
+      src={src}
+      alt={alt}
+      fill={fill}
+      className="object-contain"
+      priority={priority}
+      {...(!fill ? { width: src.width, height: src.height } : {})}
+    />
+  );
+
+  if (!expandable) {
+    return (
+      <div className={`relative ${fill ? "w-full h-full" : "block w-fit"} ${className}`}>
+        {content}
+      </div>
+    );
+  }
 
   return (
     <button 
       className={`relative cursor-pointer group border-none p-0 m-0 bg-transparent text-left outline-none ${fill ? "w-full h-full" : "block w-fit"} ${className}`}
       onClick={() => openLightbox([src])}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill={fill}
-        className="object-contain"
-        priority={priority}
-        {...(!fill ? { width: src.width, height: src.height } : {})}
-      />
+      {content}
       {/* Lightbox Trigger Hint */}
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center pointer-events-none">
         <div className="bg-white/90 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 text-sm font-medium shadow-sm">

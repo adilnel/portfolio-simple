@@ -27,17 +27,6 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
     document.body.style.overflow = "unset";
   }, []);
 
-  // Close on ESC key
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeLightbox();
-    };
-    if (isOpen) {
-      window.addEventListener("keydown", handleEsc);
-    }
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, [isOpen, closeLightbox]);
-
   const nextImage = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
   }, [images.length]);
@@ -45,6 +34,30 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
   const prevImage = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   }, [images.length]);
+
+  // Close on ESC key and navigate with arrows
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (images.length > 1) {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          e.stopPropagation();
+          nextImage();
+        }
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          e.stopPropagation();
+          prevImage();
+        }
+      }
+    };
+    
+    if (isOpen) {
+      window.addEventListener("keydown", handleKeyDown, true); // Use capture to intercept before other listeners
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown, true);
+  }, [isOpen, closeLightbox, images.length, nextImage, prevImage]);
 
   return (
     <LightboxContext.Provider value={{ openLightbox, closeLightbox }}>
