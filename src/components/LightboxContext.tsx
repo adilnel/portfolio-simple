@@ -83,20 +83,20 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
           {images.length > 1 && (
             <>
               <button 
-                className="absolute left-4 md:left-8 text-white/40 hover:text-white transition-colors z-[110] p-4"
+                className="absolute left-4 md:left-8 text-black bg-white/20 hover:bg-white/40 transition-all z-[110] p-3 rounded-full backdrop-blur-sm"
                 onClick={(e) => { e.stopPropagation(); prevImage(); }}
                 aria-label="Previous image"
               >
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
               </button>
               <button 
-                className="absolute right-4 md:right-8 text-white/40 hover:text-white transition-colors z-[110] p-4"
+                className="absolute right-4 md:right-8 text-black bg-white/20 hover:bg-white/40 transition-all z-[110] p-3 rounded-full backdrop-blur-sm"
                 onClick={(e) => { e.stopPropagation(); nextImage(); }}
                 aria-label="Next image"
               >
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
               </button>
