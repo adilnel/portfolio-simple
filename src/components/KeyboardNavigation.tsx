@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { useNavigation } from "@/context/NavigationContext";
 
 const ROUTES = [
   "/",
@@ -35,22 +36,26 @@ const ROUTES = [
 export default function KeyboardNavigation() {
   const router = useRouter();
   const pathname = usePathname();
+  const { navigate, isNavigating } = useNavigation();
   const isThrottled = useRef(false);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // Don't navigate if we're already loading
+      if (isNavigating) return;
+
       const currentIndex = ROUTES.indexOf(pathname);
       if (currentIndex === -1) return;
 
       if (event.key === "ArrowRight" || event.key === "ArrowDown") {
         const nextIndex = currentIndex + 1;
         if (nextIndex < ROUTES.length) {
-          router.push(ROUTES[nextIndex]);
+          navigate(ROUTES[nextIndex], "next");
         }
       } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
         const prevIndex = currentIndex - 1;
         if (prevIndex >= 0) {
-          router.push(ROUTES[prevIndex]);
+          navigate(ROUTES[prevIndex], "back");
         }
       }
     };
@@ -58,7 +63,7 @@ export default function KeyboardNavigation() {
     const handleWheel = (event: WheelEvent) => {
       // Only for large screens (md: 768px)
       if (window.innerWidth < 768) return;
-      if (isThrottled.current) return;
+      if (isThrottled.current || isNavigating) return;
 
       // Threshold for deltaY to avoid accidental triggers
       if (Math.abs(event.deltaY) < 30) return;
@@ -103,7 +108,7 @@ export default function KeyboardNavigation() {
         const nextIndex = currentIndex + 1;
         if (nextIndex < ROUTES.length) {
           isThrottled.current = true;
-          router.push(ROUTES[nextIndex]);
+          navigate(ROUTES[nextIndex], "next");
           setTimeout(() => {
             isThrottled.current = false;
           }, cooldown);
@@ -113,7 +118,7 @@ export default function KeyboardNavigation() {
         const prevIndex = currentIndex - 1;
         if (prevIndex >= 0) {
           isThrottled.current = true;
-          router.push(ROUTES[prevIndex]);
+          navigate(ROUTES[prevIndex], "back");
           setTimeout(() => {
             isThrottled.current = false;
           }, cooldown);
@@ -128,7 +133,7 @@ export default function KeyboardNavigation() {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("wheel", handleWheel);
     };
-  }, [pathname, router]);
+  }, [pathname, router, isNavigating, navigate]);
 
   return null;
 }

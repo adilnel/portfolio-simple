@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { NavigationProvider } from "@/context/NavigationContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,11 +41,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ScrollProgressBar />
-        <LightboxProvider>
-          <KeyboardNavigation />
-          {children}
-        </LightboxProvider>
+        <NavigationProvider>
+          <ScrollProgressBar />
+          <LightboxProvider>
+            <KeyboardNavigation />
+            {children}
+          </LightboxProvider>
+        </NavigationProvider>
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />

@@ -1,9 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { ReactNode, useState, useEffect, useRef, useCallback } from "react";
 import ProjectHeader, { NavItem } from "./ProjectHeader";
 import HamburgerMenu from "./HamburgerMenu";
+import ScrollProgressBar from "./ScrollProgressBar";
+import { useNavigation } from "@/context/NavigationContext";
+import Spinner from "./Spinner";
 
 interface ProjectLayoutProps {
   children: ReactNode;
@@ -36,6 +38,8 @@ export default function ProjectLayout({
   isHome = false,
   extraFooterContent,
 }: ProjectLayoutProps) {
+  const { isNavigating, navDirection, navigate } = useNavigation();
+  
   const bgColor = darkMode ? "bg-black" : "bg-white";
   const textColor = darkMode ? "text-white" : "text-black";
   const borderColor = darkMode ? "border-zinc-800" : "border-zinc-100";
@@ -68,6 +72,7 @@ export default function ProjectLayout({
 
   return (
     <main className={`min-h-screen ${bgColor} ${textColor} flex flex-col md:flex-row overflow-x-hidden pb-32 md:pb-0 relative`}>
+      <ScrollProgressBar />
       {/* Mobile background image for home page */}
       {isHome && (
         <div className="md:hidden absolute inset-0 z-0 opacity-20 pointer-events-none">
@@ -121,22 +126,24 @@ export default function ProjectLayout({
           <div className="flex items-center md:items-end justify-between md:justify-start gap-x-12 gap-y-4 w-full md:max-w-none mx-auto md:mx-0 flex-wrap px-4 md:px-0">
             <div className="flex items-center justify-between md:justify-start gap-12 w-full md:w-auto">
               {backLink && (
-                <Link
-                  href={backLink}
-                  className={`group flex items-center justify-center w-12 h-12 md:w-8 md:h-8 ${darkMode ? "opacity-60 hover:opacity-100" : "opacity-40 hover:opacity-100"} transition-opacity`}
+                <button
+                  onClick={() => navigate(backLink, "back")}
+                  className={`group flex items-center justify-center w-12 h-12 md:w-8 md:h-8 ${darkMode ? "opacity-60 hover:opacity-100" : "opacity-40 hover:opacity-100"} transition-opacity border-none bg-transparent cursor-pointer p-0`}
                   aria-label="Previous page"
+                  disabled={isNavigating}
                 >
                   <span className="flex items-center">
-                    <span className="text-3xl md:text-2xl">←</span>
+                    {isNavigating && navDirection === "back" ? <Spinner /> : <span className="text-3xl md:text-2xl">←</span>}
                   </span>
-                </Link>
+                </button>
               )}
               
               {nextLink && (
-                <Link
-                  href={typeof nextLink === "string" ? nextLink : nextLink.href}
-                  className={`group flex items-center justify-center min-w-[3rem] h-12 md:h-8 ${darkMode ? "opacity-60 hover:opacity-100" : "opacity-40 hover:opacity-100"} transition-opacity ml-auto md:ml-0`}
+                <button
+                  onClick={() => navigate(typeof nextLink === "string" ? nextLink : nextLink.href, "next")}
+                  className={`group flex items-center justify-center min-w-[3rem] h-12 md:h-8 ${darkMode ? "opacity-60 hover:opacity-100" : "opacity-40 hover:opacity-100"} transition-opacity ml-auto md:ml-0 border-none bg-transparent cursor-pointer p-0`}
                   aria-label="Next page"
+                  disabled={isNavigating}
                 >
                   <span className="flex items-center relative">
                     {typeof nextLink === "object" && (
@@ -144,9 +151,9 @@ export default function ProjectLayout({
                         {nextLink.label}
                       </span>
                     )}
-                    <span className="text-3xl md:text-2xl">→</span>
+                    {isNavigating && navDirection === "next" ? <Spinner /> : <span className="text-3xl md:text-2xl">→</span>}
                   </span>
-                </Link>
+                </button>
               )}            </div>
 
             {isHome && (
