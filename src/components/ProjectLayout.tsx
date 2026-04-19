@@ -97,7 +97,7 @@ export default function ProjectLayout({
 
             {isHome && (
               <span className={`hidden md:block text-[10px] uppercase tracking-[0.2em] font-bold ${darkMode ? "text-white/30" : "text-black/30"} whitespace-nowrap`}>
-                Use keyboard arrows to navigate back and forth
+                💡 Use keyboard arrows to navigate back and forth
               </span>
             )}
           </div>
