@@ -131,7 +131,7 @@ export default function ProjectHeader({
         >
           <span className="flex items-center">
             <span className="mr-2">←</span>
-            Back to Home
+            Back to Start
           </span>
         </Link>
       )}

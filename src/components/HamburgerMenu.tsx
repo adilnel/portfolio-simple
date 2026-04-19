@@ -76,7 +76,7 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
         >
           <span className="flex items-center text-sm font-medium uppercase tracking-wider">
             <span className="mr-2">←</span>
-            Back to Home
+            Back to Start
           </span>
         </Link>
 
@@ -84,7 +84,7 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-3 -mr-3 group pointer-events-auto"
-          aria-label="Toggle Menu"
+          aria-label={isOpen ? "Close Menu" : "Open Menu"}
         >
           <div className="flex flex-col gap-1.5 w-6 items-end">
             <span 
@@ -104,7 +104,7 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="hidden md:block fixed top-8 right-8 z-[150] p-4 group"
-        aria-label="Toggle Menu"
+        aria-label={isOpen ? "Close Menu" : "Open Menu"}
       >
         <div className="flex flex-col gap-1.5 w-6 items-end">
           <span 
