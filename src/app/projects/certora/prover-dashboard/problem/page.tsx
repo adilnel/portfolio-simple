@@ -24,6 +24,7 @@ export default function CertoraProverDashboardProblem() {
           <ProjectImage
             src={proverDashboardProblemImg}
             alt="Certora Prover Dashboard Problem"
+            expandable={false}
           />
         </div>
       }

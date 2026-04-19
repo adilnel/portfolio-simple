@@ -24,6 +24,7 @@ export default function CertoraProverReportPart() {
           <ProjectImage
             src={proverReportPartImg}
             alt="Certora Prover Report Flowchart"
+            expandable={false}
           />
         </div>
       }
