@@ -60,17 +60,29 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
   };
 
   // On scroll, we force a light background (white) as requested, so text/lines must be black
-  const useWhiteHeader = isScrolled && !isOpen;
-  const lineColor = (isOpen || (darkMode && !useWhiteHeader)) ? "bg-white" : "bg-black";
-  const backToHomeColor = (isOpen || (darkMode && !useWhiteHeader)) ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black";
+  const useWhiteHeader = (isScrolled || isOpen) && !isOpen; // Re-evaluating logic
+  
+  // Revised colors for inverted menu
+  const lineColor = isOpen ? "bg-black" : (darkMode || isScrolled) ? "bg-white" : "bg-black";
+  const backToHomeColor = isOpen ? "text-zinc-400 hover:text-black" : (darkMode || isScrolled) ? "text-zinc-500 hover:text-white" : "text-zinc-400 hover:text-black";
 
   if (pathname === "/") return null;
+
+  // Spinner Component
+  const SpinnerComponent = () => (
+    <div className="flex items-center justify-center w-5 h-5">
+      <svg className="animate-spin h-4 w-4 text-current opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+        <path className="opacity-100" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+    </div>
+  );
 
   return (
     <>
       {/* Sticky Header Bar for Mobile */}
       <div className={`md:hidden fixed top-0 left-0 right-0 h-16 flex items-center justify-between z-[150] px-6 transition-all duration-300 pointer-events-none ${
-        useWhiteHeader ? "bg-white/90 backdrop-blur-md border-b border-black/5 shadow-sm" : "bg-transparent"
+        isOpen ? "bg-white" : isScrolled ? "bg-white/90 backdrop-blur-md border-b border-black/5 shadow-sm" : "bg-transparent"
       }`}>
         {/* Back to Home Button */}
         <button
@@ -81,7 +93,7 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
         >
           <span className="flex items-center text-sm font-medium uppercase tracking-wider h-5">
             {isNavigating && navDirection === "back" ? (
-              <Spinner size="sm" />
+              <SpinnerComponent />
             ) : (
               <>
                 <span className="mr-2">←</span>
@@ -119,20 +131,20 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
       >
         <div className="flex flex-col gap-1.5 w-6 items-end">
           <span 
-            className={`h-0.5 ${isOpen ? "bg-white" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "w-6 rotate-45 translate-y-2" : "w-6 group-hover:w-4"}`} 
+            className={`h-0.5 ${isOpen ? "bg-black" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "w-6 rotate-45 translate-y-2" : "w-6 group-hover:w-4"}`} 
           />
           <span 
-            className={`h-0.5 ${isOpen ? "bg-white" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "opacity-0" : "w-6"}`} 
+            className={`h-0.5 ${isOpen ? "bg-black" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "opacity-0" : "w-6"}`} 
           />
           <span 
-            className={`h-0.5 ${isOpen ? "bg-white" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-4 group-hover:w-6"}`} 
+            className={`h-0.5 ${isOpen ? "bg-black" : darkMode ? "bg-white" : "bg-black"} transition-all duration-300 ${isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-4 group-hover:w-6"}`} 
           />
         </div>
       </button>
 
       {/* Overlay Menu */}
       <div
-        className={`fixed inset-0 z-[140] bg-black transition-transform duration-500 ease-in-out ${
+        className={`fixed inset-0 z-[140] bg-white transition-transform duration-500 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -150,8 +162,8 @@ export default function HamburgerMenu({ darkMode = false }: HamburgerMenuProps) 
                   onMouseLeave={() => setHoveredItem(null)}
                   className={`text-5xl md:text-7xl font-bold uppercase tracking-tight transition-all duration-300 ${
                     isFocused 
-                      ? "text-white translate-x-4" 
-                      : "text-white/10"
+                      ? "text-black translate-x-4" 
+                      : "text-black/10"
                   }`}
                 >
                   {item.label}

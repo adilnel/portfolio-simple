@@ -24,6 +24,7 @@ export default function CertoraProblem() {
           <ProjectImage
             src={certoraProblemImg}
             alt="Certora CLI Interface"
+            objectFit="object-cover"
           />
         </div>
       }

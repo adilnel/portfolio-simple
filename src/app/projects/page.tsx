@@ -12,12 +12,12 @@ export default function AutoCADGoal() {
       backLink="/projects/certora/mutation-testing/part"
       nextLink="/projects/problem"
       rightContent={
-        <div className="relative w-fit max-w-[280px] md:max-w-[400px] max-h-[85vh] shadow-2xl rounded-[30px] md:rounded-[40px] overflow-hidden">
+        <div className="relative h-full max-h-full aspect-[375/812] shadow-2xl rounded-[min(40px,5vh)] overflow-hidden">
           <ProjectImage
             src={goalImg}
             alt="AutoCAD Mobile Interface"
             priority
-            fill={false}
+            objectFit="object-cover"
           />
         </div>
       }

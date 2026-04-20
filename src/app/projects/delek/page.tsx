@@ -12,11 +12,12 @@ export default function DelekGoal() {
       backLink="/projects/proposal"
       nextLink="/projects/delek/problem"
       rightContent={
-        <div className="relative w-full max-w-[280px] md:max-w-[400px] aspect-[375/812] shadow-2xl rounded-[40px] overflow-hidden">
+        <div className="relative h-full max-h-full aspect-[375/812] shadow-2xl rounded-[min(40px,5vh)] overflow-hidden">
           <ProjectImage
             src={delekGoalImg}
             alt="Delek App Interface"
             priority
+            objectFit="object-cover"
           />
         </div>
       }

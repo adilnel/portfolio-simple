@@ -98,9 +98,9 @@ export default function ProjectLayout({
           <div 
             ref={contentRef}
             id="main-content-area"
-            className={`flex-1 flex flex-col ${hideRightPanel || isMobileContentCentered ? "items-center justify-center text-center py-12 md:py-24" : "justify-start pt-6 md:py-16"} overflow-y-auto no-scrollbar`}
+            className={`flex-1 flex flex-col ${hideRightPanel || isMobileContentCentered ? "items-center justify-center text-center py-8 md:py-12" : "justify-start pt-6 md:py-16"} overflow-y-auto no-scrollbar`}
           >
-            <div className={`w-full ${hideRightPanel ? "max-w-6xl" : ""}`}>
+            <div className={`w-full ${hideRightPanel ? "max-w-6xl pb-24 md:pb-0" : ""}`}>
               {children}
             </div>
           </div>
@@ -171,8 +171,8 @@ export default function ProjectLayout({
       {!hideRightPanel ? (
         <>
           <div className="hidden md:block w-1/2" />
-          <div className={`hidden md:flex w-full md:w-1/2 h-screen fixed right-0 top-0 ${darkMode ? "bg-zinc-900" : "bg-zinc-50"} flex-col items-center justify-center ${isRightPanelPadded ? "py-8 px-[21px] md:py-12 md:px-8 lg:py-24 lg:px-8" : ""}`}>
-            <div className="relative w-full h-full flex items-center justify-center">
+          <div className={`hidden md:flex w-full md:w-1/2 h-screen fixed right-0 top-0 ${darkMode ? "bg-zinc-900" : "bg-zinc-50"} flex-col items-center justify-center ${isRightPanelPadded ? "py-12 px-8 lg:px-8" : ""}`}>
+            <div className={`relative w-full h-full flex items-center justify-center ${isRightPanelPadded ? "max-h-[85vh]" : ""}`}>
               {rightContent}
             </div>
           </div>

@@ -10,6 +10,7 @@ interface ProjectImageProps {
   priority?: boolean;
   fill?: boolean;
   expandable?: boolean;
+  objectFit?: "object-contain" | "object-cover";
 }
 
 export default function ProjectImage({ 
@@ -18,7 +19,8 @@ export default function ProjectImage({
   className = "", 
   priority = false,
   fill = true,
-  expandable = true
+  expandable = true,
+  objectFit = "object-contain"
 }: ProjectImageProps) {
   const { openLightbox } = useLightbox();
 
@@ -27,7 +29,7 @@ export default function ProjectImage({
       src={src}
       alt={alt}
       fill={fill}
-      className="object-contain"
+      className={objectFit}
       priority={priority}
       {...(!fill ? { width: src.width, height: src.height } : {})}
     />
